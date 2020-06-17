@@ -1,0 +1,134 @@
+{include file="public/header" }
+{include file="public/nav" }
+{include file="public/banner_b" }
+<div class="content">
+	<div id="sd1" class="container re1">
+		<h2>Why RAKsmart</h2>
+		<ul class="clear">
+      <li>
+        <div class="bg1">
+        	<img src="__STATIC__/images/reseller(1).png" alt="">
+	        <p>One-Stop Service</p>
+	        <span class="c2">ICT Solution, Site Selection, Hardware Procurement, Connectivity, Deployment, Maintenance and Support</span>
+        </div>
+      </li>
+      <li>
+      	<div class="bg1">
+	        <img src="__STATIC__/images/reseller(2).png" alt="">
+	        <p>Attractive Margins</p>
+	        <span class="c2">Attractive Reseller Programs for 1Tbps+Asia-Optimized IP Transit, Leased Line, SD-WAN, and Data Center Resources</span>
+        </div>
+      </li>
+      <li>
+      	<div class="bg1">
+	        <img src="__STATIC__/images/reseller(3).png" alt="">
+	        <p>Around The Clock Support</p>
+	        <span class="c2">24x7 Support, 13 Years + Experience</span>
+        </div>
+      </li>
+      <li>
+      	<div class="bg1">
+	        <img src="__STATIC__/images/reseller(4).png" alt="">
+	        <p>Customized Solutions</p>
+	        <span class="c2">Tailored Made Solutions Based on Leading Hardware Platforms, Hosted in Tier 3 Data Centers in Global Internet Hubs</span>
+        </div>
+      </li>
+      <li>
+      	<div class="bg1">
+	        <img src="__STATIC__/images/reseller(5).png" alt="">
+	        <p>Secure</p>
+	        <span class="c2">Fast, Secure Connectivity Between Any Public, Private, Bare-Metal Clouds Anywhere</span>
+        </div>
+      </li>
+      <li>
+      	<div class="bg1">
+	        <img src="__STATIC__/images/reseller(6).png" alt="">
+	        <p>DDoS Mitigation</p>
+	        <span class="c2">1Tbps+ DDoS Mitigation Service</span>
+        </div>
+      </li>
+    </ul>
+    <div id="re2" class="container pc">
+    	<img alt="{$article.a_title|default=''}" src="__STATIC__/images/reseller7.png" alt="">
+    	<div class="re2-r">
+    		<h2>Working with RAKsmart</h2>
+    		<p>As a reseller or promoter of RAKsmart, you'll benefit from RAKsmart, and you can expand your products and services through RAKsmart's reseller program, while you can take advantage of your network to provide a big boost to the referral and get more out of it.</p>
+    		<a style='margin-left:130px;' class="btb c1" href="javacript:;">contact us</a>
+    	</div>
+    </div>
+	</div>
+	<div id="re3" class="bg2">
+		<h2>Tiered Reseller Program</h2>
+		<div class="container">
+			<p>Attractive Reseller Programs for 1Tbps+Asia-Optimized IP Transit, Leased Line, SD-WAN, and Data Center Resources</p>
+			<div id="roll-x">
+				<table class="bg1">
+	        <tr>
+	          <th></th>
+				{if condition="$reseller"}
+				{volist name="reseller" id="vo"}
+				<th>{$vo.r_type|default=""}</th>
+				{/volist}
+				{/if}
+	          <tr>
+	            <td>Recharge amount/time</td>
+				{if condition="$reseller"}
+				{volist name="reseller" id="vo"}
+				<td>{$vo.r_money|default=""}</td>
+				{/volist}
+				{/if}
+	          </tr>
+	          <tr>
+	              <td>Discount</td>
+				  {if condition="$reseller"}
+				  {volist name="reseller" id="vo"}
+				  <td>{$vo.r_zhe|default=""}{if condition="$vo['r_zhe']"}%{/if}</td>
+				  {/volist}
+				  {/if}
+	          </tr>
+	          <tr>
+	            <td>Resource allocation</td>
+				  {if condition="$reseller"}
+				  {volist name="reseller" id="vo"}
+				  <td>{$vo.r_resource|default=""}</td>
+				  {/volist}
+				  {/if}
+	          </tr>
+	          <tr>
+	            <td>Technical support</td>
+				  {if condition="$reseller"}
+				  {volist name="reseller" id="vo"}
+				  <td>{$vo.r_zc|default=""}</td>
+				  {/volist}
+				  {/if}
+	          </tr>
+	          <tr>
+	            <td>Reformat servers</td>
+				  {if condition="$reseller"}
+				  {volist name="reseller" id="vo"}
+				  <td>{$vo.r_server|default=""}</td>
+				  {/volist}
+				  {/if}
+	          </tr>
+	        </tr>
+	      </table>
+			</div>
+		</div>
+
+	</div>
+	{include file="public/message" }
+</div>
+{include file="public/footer" }
+<script type="text/javascript">
+	$('#menu').on('click',function(){$(this).toggleClass('show');$('body').toggleClass('fix');})
+	$('#navl li').on('click',function(){if($('#menu').is(":visible")){$(this).toggleClass('show').siblings().removeClass('show');}return})
+	$('#budget').click(function(){
+    $(this).find('ol').show();
+  });
+  $('#budget li').click(function(e){
+    var val = $(this).text();
+    $(this).parents('ol').siblings('input').val(val);
+    $('#budget ol').hide();
+    e.stopPropagation();
+  });
+</script>

@@ -1,0 +1,62 @@
+<form name="form" id="form" action="" class="container bg1" method='post'>
+<div id="quote" class="container bg1">
+	<h2>Get a Quote</h2>
+	<ul>
+		<li class="clear">
+			<div><span class='c2'>您的姓名：</span><input name="name" type="text"></div>
+			<div><span class='c2'>您的邮箱：</span><input name="email" type="text"></div>
+		</li>
+		<li class="clear">
+			<div><span class='c2'>联系电话：</span><input name="tell" type="text"></div>
+			<div id="budget"><span class='c2'>资金预算：</span><input  name="type" type="text" readonly="">
+				<ol class="bg1">
+					<li data-value="$0 - $100">$0 - $100</li>
+					<li data-value="$100 - $200">$100 - $200</li>
+					<li data-value="$200 - $300">$200 - $300</li>
+					<li data-value="$300 - $400">$300 - $400</li>
+				</ol></div>
+		</li>
+		<li><textarea rows="5" name="content"></textarea></li>
+		<li><a class="btb c1" id="submit_message" href="javacript:;">完成并发送</a></li>
+	</ul>
+	<div class="popup c1" style="width:240px;margin-top:-388px;display:''"><p id="chongfu">请完善表单信息</p><p>提交成功，请等候</p></div>
+</div>
+</form>
+<script type="text/javascript">
+	$('#submit_message').click(function(){
+		var name = $("input[name='name']").val();
+		var email = $("input[name='email']").val();
+		var tell = $("input[name='tell']").val();
+		var type = $("input[name='type']").val();
+		if(name == '' || email == '' || tell == '' || type == ''){
+			$('.popup').show().delay(3500).hide(100);
+			$('.popup').removeAttr('id').attr('id','no');
+			return false;
+		}
+		$.ajax({
+			type: "POST",//方法类型
+			dataType: "json",//预期服务器返回的数据类型
+			url: "{:url('home/mix/submitdata')}" ,//url
+			data: $('#form').serialize(),
+			success: function (result) {
+				console.log(result);//打印服务端返回的数据(调试用)//提交成功
+				if (result.code == 0) {
+					$('.popup').show().delay(3500).hide(100);
+					$('.popup').removeAttr('id').attr('id','yes');
+					//清空表单数据
+					$(':input','#form')
+							.not(':button, :submit, :reset, :hidden')
+							.val('')
+							.removeAttr('checked')
+							.removeAttr('selected');
+				}
+				else
+				{
+					$('.popup').show().delay(3500).hide(100);
+					$("#chongfu").html('不可以重复提交哟');
+					$('.popup').removeAttr('id').attr('id','no');
+				};
+			}
+		});
+	})
+</script>

@@ -1,0 +1,73 @@
+{include file="public/header" }
+{include file="public/nav" }
+{include file="public/banner_b" }
+<div class="content">
+	<div id="mix1" class="bg2">
+		<h2>多云互联</h2>
+		<p class="container">云互联以 SDN 技术为核心，基于分布于全球 PoP 点，提供公有云与公有云、公有云与数据中心之间的告诉专线连接，帮助用户实现同城或跨地域的云上云下数据互通，快速搭建一个混合云使用环境</p>
+		<img class="pc" src="__STATIC__/images/mix(1).png" alt="">
+		<img class="phone" src="__STATIC__/images/mix(1)-1.png" alt="">
+	</div>
+	<!--为什么选择裸机云-->
+	<div id="bare2" class="container">
+		<h2>多云互联优势</h2>
+		<ul class="clear">
+			<li>
+				<div class="bg1">
+					<img src="__STATIC__/images/bare(1).png" alt="">
+					<p>高速、稳定</p>
+					<span class="c2">99%的SLA业务保障</span>
+				</div>
+			</li>
+			<li>
+				<div class="bg1">
+					<img src="__STATIC__/images/bare(2).png" alt="">
+					<p>智能化管理</p>
+					<span class="c2">可视化智能管理平台</span>
+				</div>
+			</li>
+			<li>
+				<div class="bg1">
+					<img src="__STATIC__/images/bare(3).png" alt="">
+					<p>专业运维</p>
+					<span class="c2">7*24小时运维团队</span>
+				</div>
+			</li>
+			<li>
+				<div class="bg1">
+					<img src="__STATIC__/images/bare(4).png" alt="">
+					<p>智能生态圈</p>
+					<span class="c2">全球超大规模<br>公有云战略合作</span>
+				</div>
+			</li>
+		</ul>
+	</div>
+	<!--为什么选择裸机云 end-->
+	<div id="mix2" class="bg1">
+		<h2>应用场景</h2>
+		<div class="bg3">
+			<ul class="container clear">
+				<li><img class="pc" src="__STATIC__/images/mix(7).png" alt=""><img class="phone" src="__STATIC__/images/mix(7)-1.png" alt=""><a href="javascript:;"><span class="c1">游戏</span></a></li>
+				<li><img class="pc" src="__STATIC__/images/mix(8).png" alt=""><img class="phone" src="__STATIC__/images/mix(8)-1.png" alt=""><a href="javascript:;"><span class="c1">视频直播</span></a></li>
+				<li><img class="pc" src="__STATIC__/images/mix(9).png" alt=""><img class="phone" src="__STATIC__/images/mix(9)-1.png" alt=""><a href="javascript:;"><span class="c1">在线教育</span></a></li>
+				<li><img class="pc" src="__STATIC__/images/mix(10).png" alt=""><img class="phone" src="__STATIC__/images/mix(10)-1.png" alt=""><a href="javascript:;"><span class="c1">内容发布</span></a></li>
+				<li><img class="pc" src="__STATIC__/images/mix(11).png" alt=""><img class="phone" src="__STATIC__/images/mix(11)-1.png" alt=""><a href="javascript:;"><span class="c1">移动互联网</span></a></li>
+			</ul>
+		</div>
+	</div>
+	{include file="public/message" }<!--留言-->
+</div>
+{include file="public/footer" }
+<script type="text/javascript">
+	$('#menu').on('click',function(){$(this).toggleClass('show');$('body').toggleClass('fix');})
+	$('#navl li').on('click',function(){if($('#menu').is(":visible")){$(this).toggleClass('show').siblings().removeClass('show');}return})
+	$('#budget').click(function(){
+    $(this).find('ol').show();
+  });
+  $('#budget li').click(function(e){
+    var val = $(this).text();
+    $(this).parents('ol').siblings('input').val(val);
+    $('#budget ol').hide();
+    e.stopPropagation();
+  });
+</script>

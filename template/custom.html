@@ -1,0 +1,158 @@
+{include file="public/header" }
+{include file="public/nav" }
+{include file="public/banner_b" }
+<div id="custom1" class="bg2">
+	<form name="form" id="form" action="{:url('home/custom/submitdata')}" class="container bg1" method='post'>
+		<ul>
+			<li class="clear">
+				<div name="select"><i></i><input name="d_country" type="text" readonly="" placeholder="国家"/>
+	        <ol class="bg1">
+				{if condition="$dictionaries_info[1]"}
+				{volist name="dictionaries_info[1]" id="vo"}
+				<li data-value="{$vo.id|default=''}">{$vo.name|default=''}</li>
+				{/volist}
+				{/if}
+	        </ol>
+	      </div>
+				<div name="select"><i></i><input name="d_cpu" type="text" readonly="" placeholder="CPU"/>
+	        <ol class="bg1">
+				{if condition="$dictionaries_info[2]"}
+				{volist name="dictionaries_info[2]" id="vo"}
+				<li data-value="{$vo.id|default=''}">{$vo.name|default=''}</li>
+				{/volist}
+				{/if}
+	        </ol>
+	      </div>
+				<div name="select"><i></i><input name="d_nc" type="text" readonly="" placeholder="内存"/>
+	        <ol class="bg1">
+				{if condition="$dictionaries_info[3]"}
+				{volist name="dictionaries_info[3]" id="vo"}
+				<li data-value="{$vo.id|default=''}">{$vo.name|default=''}</li>
+				{/volist}
+				{/if}
+	        </ol>
+	      </div>
+				<div name="select"><i></i><input name="d_yp" type="text" readonly="" placeholder="硬盘"/>
+	        <ol class="bg1">
+				{if condition="$dictionaries_info[4]"}
+				{volist name="dictionaries_info[4]" id="vo"}
+				<li data-value="{$vo.id|default=''}">{$vo.name|default=''}</li>
+				{/volist}
+				{/if}
+	        </ol>
+	      </div>
+				<div name="select"><i></i><input name="d_ip" type="text" readonly="" placeholder="IP"/>
+	        <ol class="bg1">
+				{if condition="$dictionaries_info[5]"}
+				{volist name="dictionaries_info[5]" id="vo"}
+				<li data-value="{$vo.id|default=''}">{$vo.name|default=''} IP</li>
+				{/volist}
+				{/if}
+	        </ol>
+	      </div>
+				<div name="select"><i></i><input name="d_wl" type="text" readonly="" placeholder="网络"/>
+	        <ol class="bg1">
+				{if condition="$dictionaries_info[6]"}
+				{volist name="dictionaries_info[6]" id="vo"}
+				<li data-value="{$vo.id|default=''}">{$vo.name|default=''}</li>
+				{/volist}
+				{/if}
+	        </ol>
+	      </div>
+				<div name="select"><i></i><input name="d_kd" type="text" readonly="" placeholder="带宽/流量"/>
+	        <ol class="bg1">
+				{if condition="$dictionaries_info[7]"}
+				{volist name="dictionaries_info[7]" id="vo"}
+				<li data-value="{$vo.id|default=''}">{$vo.name|default=''}</li>
+				{/volist}
+				{/if}
+	        </ol>
+	      </div>
+			</li>
+			<li>
+				<textarea name="d_other"  placeholder="其他需求："></textarea>
+			</li>
+			<li class="clear">
+				<span><i></i><input type="text" name="d_tell" placeholder="联系方式："></span>
+				<span><input type="text" name="d_email" placeholder="邮箱："></span>
+				<span><input type="text" name="d_qq" placeholder="QQ："></span>
+				<span><i></i><input type="text" name="d_name" placeholder="联系人："></span>
+				<span><input type="text" name="d_skype" placeholder="Skype："></span>
+			</li>
+		</ul>
+     	<a class="btb c1" role="button" href="javascript:;">提交</a>
+	</form>
+	<div class="popup c1"><p id="chongfu">请完善表单信息</p><p>提交成功，请等候</p></div>
+</div>
+{include file="public/footer" }
+<script type="text/javascript">
+	$('#menu').on('click',function(){$(this).toggleClass('show');$('body').toggleClass('fix');})
+	$('#navl li').on('click',function(){if($('#menu').is(":visible")){$(this).toggleClass('show').siblings().removeClass('show');}return})
+
+	$('[name="select"]').on('click',function(e){
+    $('[name="select"]').find('ol').hide();
+    $(this).find('ol').show();
+    e.stopPropagation();
+  });
+  $('[name="select"] li').hover(function(e){
+    $(this).toggleClass('show');
+    e.stopPropagation();
+  });
+  $('[name="select"] li').click(function(e){
+    var val = $(this).text();
+    $(this).parents('[name="select"]').find('input').val(val);
+    $('[name="select"] ol').hide();
+    e.stopPropagation();
+  });
+
+  $('#custom1 a').click(function(){
+	  var d_country = $("input[name='d_country']").val();
+	  var d_cpu = $("input[name='d_cpu']").val();
+	  var d_nc = $("input[name='d_nc']").val();
+	  var d_yp = $("input[name='d_yp']").val();
+	  var d_ip = $("input[name='d_ip']").val();
+	  var d_wl = $("input[name='d_wl']").val();
+	  var d_kd = $("input[name='d_kd']").val();
+	  var d_tell = $("input[name='d_tell']").val();
+	  var d_name = $("input[name='d_name']").val();
+	  if(d_country == '' || d_cpu == '' || d_nc == '' || d_yp == '' || d_ip == '' || d_wl == '' || d_kd == '' || d_tell == '' || d_name == ''){
+		  $('.popup').show().delay(3500).hide(100);
+		  $('.popup').removeAttr('id').attr('id','no');
+		  return false;
+	  }
+	  $.ajax({
+		  type: "POST",//方法类型
+		  dataType: "json",//预期服务器返回的数据类型
+		  url: "{:url('home/custom/submitdata')}" ,//url
+		  data: $('#form').serialize(),
+		  success: function (result) {
+			  console.log(result);//打印服务端返回的数据(调试用)//提交成功
+			  if (result.code == 0) {
+				  $('.popup').show().delay(3500).hide(100);
+				  $('.popup').removeAttr('id').attr('id','yes');
+				  //数据提交成功  清空表单数据
+				  $(':input','#form')
+						  .not(':button, :submit, :reset, :hidden')
+						  .val('')
+						  .removeAttr('checked')
+						  .removeAttr('selected');
+			  }
+			  else
+			  {
+				  $('.popup').show().delay(3500).hide(100);
+				  $("#chongfu").html('不可以重复提交哟');
+				  $('.popup').removeAttr('id').attr('id','no');
+			  };
+		  }
+	  });
+    /*$("#custom1 i~input").each(function(){
+    	  $('.popup').show().delay(3500).hide(100);
+		  if($(this).val()==""){
+			$('.popup').removeAttr('id').attr('id','no');
+		  }
+		  else{
+			$('.popup').removeAttr('id').attr('id','yes');
+		  }
+    })*/
+  });
+</script>

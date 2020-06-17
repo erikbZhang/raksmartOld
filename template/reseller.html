@@ -1,0 +1,134 @@
+{include file="public/header" }
+{include file="public/nav" }
+{include file="public/banner_b" }
+<div class="content">
+	<div id="sd1" class="container re1">
+		<h2>选择 RAKSMART 代理合作，为您提供什么？</h2>
+		<ul class="clear">
+      <li>
+        <div class="bg1">
+        	<img src="__STATIC__/images/reseller(1).png" alt="">
+	        <p>完善的解决方案</p>
+	        <span class="c2">定制方案，选择数据中心，采购硬件 专线接入，机器上架布线，技术维护</span>
+        </div>
+      </li>
+      <li>
+      	<div class="bg1">
+	        <img src="__STATIC__/images/reseller(2).png" alt="">
+	        <p>阶梯折扣体系</p>
+	        <span class="c2">出口带宽覆盖全球，T级带宽保证 专线中国 电信CN2/CT、移动、联通</span>
+        </div>
+      </li>
+      <li>
+      	<div class="bg1">
+	        <img src="__STATIC__/images/reseller(3).png" alt="">
+	        <p>全天候支持</p>
+	        <span class="c2">10年以上专业技术团队 24x7在线专业技术支持</span>
+        </div>
+      </li>
+      <li>
+      	<div class="bg1">
+	        <img src="__STATIC__/images/reseller(4).png" alt="">
+	        <p>定制业务</p>
+	        <span class="c2">国际ISO认证Tier 3+ 规格，采用国际一线品牌硬件支持</span>
+        </div>
+      </li>
+      <li>
+      	<div class="bg1">
+	        <img src="__STATIC__/images/reseller(5).png" alt="">
+	        <p>安全设施</p>
+	        <span class="c2">全球云连接，全球专线连接 提供强大的云+网络连接智能管理平台</span>
+        </div>
+      </li>
+      <li>
+      	<div class="bg1">
+	        <img src="__STATIC__/images/reseller(6).png" alt="">
+	        <p>合作伙伴</p>
+	        <span class="c2">1Tbps+ DDoS防御解决方案</span>
+        </div>
+      </li>
+    </ul>
+    <div id="re2" class="container pc">
+    	<img alt="{$article.a_title|default=''}" src="__STATIC__/images/reseller7.png" alt="">
+    	<div class="re2-r">
+    		<h2>与RAKsmart合作</h2>
+    		<p>成为RAKsmart的经销商或推介者，您将从RAKsmart受益良多，您可以通过RAKsmart的经销商计划拓展您的产品与服务，同时您也可以利用您的人脉优势，为推介介乎提供一大助力，获得更多的收益。</p>
+    		<a  style="margin-left: 128px;" class="btb c1" href="javacript:;">联系我们</a>
+    	</div>
+    </div>
+	</div>
+	<div id="re3" class="bg2">
+		<h2>代理商折扣制度</h2>
+		<div class="container">
+			<p>我们的数据中心遍布全球 ，拥有极佳地理冗余，能对延迟实现理想优化，拥有规模最大的光纤对接，数据中心均为运营商中立数据中心，由顶级提供商提供相关服务</p>
+			<div id="roll-x">
+				<table class="bg1">
+	        <tr>
+	          <th></th>
+				{if condition="$reseller"}
+				{volist name="reseller" id="vo"}
+				<th>{$vo.r_type|default=""}</th>
+				{/volist}
+				{/if}
+	          <tr>
+	            <td>充值金额/次</td>
+				{if condition="$reseller"}
+				{volist name="reseller" id="vo"}
+				<td>{$vo.r_money|default=""}</td>
+				{/volist}
+				{/if}
+	          </tr>
+	          <tr>
+	              <td>折扣</td>
+				  {if condition="$reseller"}
+				  {volist name="reseller" id="vo"}
+				  <td>{$vo.r_zhe|default=""}{if condition="$vo['r_zhe']"}%{/if}</td>
+				  {/volist}
+				  {/if}
+	          </tr>
+	          <tr>
+	            <td>资源</td>
+				  {if condition="$reseller"}
+				  {volist name="reseller" id="vo"}
+				  <td>{$vo.r_resource|default=""}</td>
+				  {/volist}
+				  {/if}
+	          </tr>
+	          <tr>
+	            <td>技术支持</td>
+				  {if condition="$reseller"}
+				  {volist name="reseller" id="vo"}
+				  <td>{$vo.r_zc|default=""}</td>
+				  {/volist}
+				  {/if}
+	          </tr>
+	          <tr>
+	            <td>重装服务器</td>
+				  {if condition="$reseller"}
+				  {volist name="reseller" id="vo"}
+				  <td>{$vo.r_server|default=""}</td>
+				  {/volist}
+				  {/if}
+	          </tr>
+	        </tr>
+	      </table>
+			</div>
+		</div>
+
+	</div>
+	{include file="public/message" }
+</div>
+{include file="public/footer" }
+<script type="text/javascript">
+	$('#menu').on('click',function(){$(this).toggleClass('show');$('body').toggleClass('fix');})
+	$('#navl li').on('click',function(){if($('#menu').is(":visible")){$(this).toggleClass('show').siblings().removeClass('show');}return})
+	$('#budget').click(function(){
+    $(this).find('ol').show();
+  });
+  $('#budget li').click(function(e){
+    var val = $(this).text();
+    $(this).parents('ol').siblings('input').val(val);
+    $('#budget ol').hide();
+    e.stopPropagation();
+  });
+</script>

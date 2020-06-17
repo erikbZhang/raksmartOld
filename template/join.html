@@ -1,0 +1,64 @@
+{include file="public/header" }
+{include file="public/nav" }
+{include file="public/banner_b" }
+<div class="content">
+	<div id="join1" class="bg2">
+		<img src="__STATIC__/images/join(1).png" alt="">
+		<h2>公司文化</h2>
+		<p class="container">Raksamrt 的企业文化以员工为核心，我们所奉行的核心宗旨是真诚、信任和团队合作；让员工热爱自己喜欢做的事情，发挥自身最大潜力；我们热衷于创新和协作，我们彼此关怀、关心客户、关心合作伙伴。</p>
+	</div>
+	<div id="join2" class="bg2">
+		<h2>员工福利</h2>
+		<ul class="clear container">
+			<li><img src="__STATIC__/images/join(2).png"><h3>健康保障</h3><p>提供健身场所、健康体检和健康保险</p></li>
+			<li><img src="__STATIC__/images/join(3).png" alt=""><h3>学习与发展</h3><p>员工发展计划</p></li>
+			<li><img src="__STATIC__/images/join(4).png" alt=""><h3>自我价值体现</h3><p>工作中充分利用你的技能</p></li>
+		</ul>
+	</div>
+	<div class="container">
+		<div id="re2" class="bg1">
+			{if condition="$join['a_img']"}
+			<img src="/uploads/{$join['a_img']|default=''}" alt="{$join['a_title']|default=''}">
+			{else/}
+			<img src="__STATIC__/images/join(5).png" alt="">{/if}
+	  	<div class="re2-r">
+	  		<h2>{$join['a_title']|default=''}</h2>
+	  		<p>{$join['a_content']|default=''}</p>
+	  		<a class="btb c1" target="_blank" href="{:url('home/all/contact')}">联系我们</a>
+	  	</div>
+	  </div>
+	</div>
+<div id="join3" class="container">
+  	<h2>空缺职位</h2>
+  	<div class="container bg1">
+  		<ul>
+		{if condition="$info"}
+		{volist name="info" id="vo"}
+		<li><h3 class="c4">{$vo.a_title|default=''}<a class="btb c1" {if condition="$vo['a_url'] neq ''"} target="_blank" href="{$vo['a_url']|default=''}" {else/} href="javascript:;" {/if} >申请</a></h3>
+        <span class="c3">{$vo.a_con|default=''}</span>
+        <p>{$vo.a_content|default=''}</p></li>
+		{/volist}
+		{/if}
+  		</ul>
+  	</div>
+  </div>
+  <!-- <div id="join3" class="container">
+  	<h2>空缺职位</h2>
+	
+	{if condition="$info"}
+	{volist name="info" id="vo"}
+	<div class="container bg1">
+  		<h3 class="c4">{$vo.a_title|default=''}<a class="btb c1" {if condition="$vo['a_url'] neq ''"} target="_blank" href="{$vo['a_url']|default=''}" {else/} href="javascript:;" {/if}>申请</a></h3>
+      <span class="c3">{$vo.a_con|default=''}</span>
+      {$vo.a_content|default=''}
+  	</div>
+	{/volist}
+	{/if}
+  </div> -->
+</div>
+{include file="public/footer" }
+<script type="text/javascript">
+	$('#menu').on('click',function(){$(this).toggleClass('show');$('body').toggleClass('fix');})
+	$('#navl li').on('click',function(){if($('#menu').is(":visible")){$(this).toggleClass('show').siblings().removeClass('show');}return})
+	
+</script>

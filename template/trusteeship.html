@@ -1,0 +1,126 @@
+{include file="public/header" }
+{include file="public/nav" }
+{include file="public/banner_b" }
+<div class="content">
+	<div id="tg1" class="container">
+		<h2>选择 RAKSMART 托管服务，为您提供什么？</h2>
+		<ul class="clear">
+			<li><div><img src="__STATIC__/images/tg(1).png"><p>一站式服务</p><span class='c2'>定制方案，选择数据中心，采购硬件专线接入，机器上架布线，技术维护</span></div></li>
+			<li><div><img src="__STATIC__/images/tg(2).png"><p>国际宽带</p><span class='c2'>出口带宽覆盖全球，T级带宽保证 专线中国 电信CN2/CT、移动、联通</span></div></li>
+			<li><div><img src="__STATIC__/images/tg(3).png"><p>专业技术团队</p><span class='c2'>技术通讯，免费电话，快捷服务体系提供农从规划、实施、优化的全方位服务</span></div></li>
+			<li><div><img src="__STATIC__/images/tg(4).png"><p>T3+ 数据中心</p><span class='c2'>国际 ISO 认证 Tier 3+规格，采用国际一线品牌硬件支持</span></div></li>
+			<li><div><img src="__STATIC__/images/tg(5).png"><p>SD-WAN</p><span class='c2'>全球云链接，全球专线连接 提供强大的云+网络连接智能管理平台</span></div></li>
+			<li><div><img src="__STATIC__/images/tg(6).png"><p>DDOS 防御解决方案</p><span class='c2'>1 Tbps+ DDoS 防御解决方案 专业SOC工程师团队24x7小时服务</span></div></li>
+		</ul>
+	</div>
+	{include file="public/public_product_fuwu" }
+	<div id="tg3" class="container">
+		<h2>数据中心设施</h2>
+		<!--pc部分-->
+		<p class="tab pc">
+			{if condition="$artcle_info"}
+			{volist name="artcle_info" id='vo'}
+			<span {if condition="$key eq 0"} class="light" {/if} >{$vo.a_con|default=""}</span>
+			{/volist}
+			{/if}
+		</p>
+		<ul class="card pc">
+			{if condition="$artcle_info"}
+			{volist name="artcle_info" id='vo'}
+			<li {if condition="$key eq 0"} style="display: list-item;" {/if} >
+				<div class="explain">
+					<h3>{$vo.a_title|default=""}</h3>
+					{$vo.a_content|default=""}
+				</div>
+				<div class="explain_mask"></div>
+				{if condition="$vo['a_img']"}
+				<img src="/uploads/{$vo.a_img}" alt="{$vo.a_title|default=''}">{/if}
+			{if condition="$vo['a_url']"}
+				<a class="btb c1"  href="{$vo.a_url|default=''}">下载说明书</a>
+			{/if}
+			</li>
+			{/volist}
+			{/if}
+		</ul>
+		<!--手机部分-->
+		<div class="swiper-container phone tab1">
+			<ul class="swiper-wrapper">
+				{if condition="$artcle_info"}
+				{volist name="artcle_info" id='vo'}
+				<li class="{if condition="$key eq 0"} light{/if} swiper-slide  ">{$vo.a_con|default=""}</li>
+				{/volist}
+				{/if}
+			</ul>
+		</div>
+		<ul class="card1 phone">
+			{if condition="$artcle_info"}
+			{volist name="artcle_info" id='vo'}
+			<li {if condition="$key eq 0"}  style="display: list-item;" {/if} >
+				{if condition="$vo['a_img']"}<img src="/uploads/{$vo.a_img}" alt="{$vo.a_title|default=''}">{/if}
+				{$vo.a_content|default=""}
+				{if condition="$vo['a_url']"}<a class="btb c1" href="{$vo.a_url|default=''}">下载说明书</a>{/if}
+			</li>
+			{/volist}
+			{/if}
+		</ul>
+	</div>
+	{include file="public/message" }
+</div>
+{include file="public/footer" }
+<script type="text/javascript">
+
+	$('#menu').on('click',function(){
+		$(this).toggleClass('show');
+		$('body').toggleClass('fix');
+	})
+	$('#navl li').on('click',function(){
+		if($('#menu').is(":visible")){
+			$(this).toggleClass('show').siblings().removeClass('show');
+		}
+		return
+	})
+	$('#tg3 .tab span').on('click',function(){$(this).addClass("light").siblings().removeClass('light');$("#tg3 .card>li").hide().eq($(this).index()).show();})
+	$('#tg3 .tab1 li').on('click',function(){$(this).addClass("light").siblings().removeClass('light');$("#tg3 .card1>li").hide().eq($(this).index()).show();})
+	 var tab= new Swiper('#tg3 .tab1',{
+  	freeMode: true,
+		centeredSlides : true,
+		centeredSlidesBounds:true,
+		slidesPerView: 'auto',
+  })
+	$('#bare1 .tab li').on('click',function(){$(this).addClass("light").siblings().removeClass('light');$("#bare1 .card li").hide().eq($(this).index()).show();})
+	$('#bare1 .tab1 li').on('click',function(){$(this).addClass("light").siblings().removeClass('light');$("#bare1 .card2>li").hide().eq($(this).index()).show();})
+
+	var tab1= new Swiper('#bare1 .tab1',{
+		freeMode: true,
+		centeredSlides : true,
+		centeredSlidesBounds:true,
+		slidesPerView: 'auto',
+	})
+	var mySwiper2 = new Swiper('.swiper2',{
+		effect : 'coverflow',
+		loop:true,
+		slidesPerView: 1.5,
+		centeredSlides: true,
+		observer: true,
+		coverflowEffect: {
+			rotate:50,
+			// stretch: 0,
+			depth: 60,
+			modifier: 1,
+			slideShadows : false
+		},
+		pagination: {
+			el: '.swiper-pagination',
+		},
+	})
+
+	$('#budget').click(function(){
+    $(this).find('ol').show();
+  });
+  $('#budget li').click(function(e){
+    var val = $(this).text();
+    $(this).parents('ol').siblings('input').val(val);
+    $('#budget ol').hide();
+    e.stopPropagation();
+  });
+</script>

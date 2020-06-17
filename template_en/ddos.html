@@ -1,0 +1,78 @@
+{include file="public/header" }
+{include file="public/nav" }
+{include file="public/banner_b" }
+<div class="content">
+	<div id="gl1" class="bg2">
+		<img src="__STATIC__/images/ddos(1).png" alt="">
+		<h2>DDOS Mitigation Service</h2>
+		<p class="container">With Strategically Located DDoS Cleansing Centers and 1Tbps+ IP Transit Backbone Capacity, RAKsmart DDoS Migration Solution Detects, Migrates and Cleanses Layer 3/4 Attacks As Well As Effectively Protects Against The Hard To Detect Layer 7 Attacks. Augmented By Intelligent DDoS Migration Algorithm, Our NoC/SoC Operates 24x7 To Ensure Your Applications Are Undisturbed By DDoS Attacks. Remote DDoS Protection Is Also Available For Clients Who Needs Mitigation Services Outside Of RAKsmart Data Centers</p>
+		<img id="ddosimg" src="__STATIC__/images/ddos4.png" alt="">
+	</div>
+	<div id="ddos1" class="c1 pc">
+		<h2>Protect Your Services From DDoS Now</h2>
+		<p class="container">Contact Our Experts Now To Start Protecting Yourself From DDoS Attacks</p>
+		<a class="c1 btb" role="button" href="{:url('home/all/contact')}">联系我们</a>
+	</div>
+	<div id="home3" class="sd2">
+		<h2 style="padding-bottom:40px;">Global data center network expands global business</h2>
+		<p class="container">Our data centers are all over the world, with excellent geographical redundancy, ideal optimization of delay, and the largest optical fiber docking. The data centers are all operators' neutral data centers, which are provided by top providers</p>
+		<ul id="map">
+	<img src="__STATIC__/images/map.png" style="display:block;">
+	<li id="btl"><i></i><p>portland</p></li>
+	<li id="shs"><i></i><p>San Jose</p></li>
+	<li id="lsj"><i></i><p>Los Angeles</p></li>
+	<li id="hg"><i></i><p>Korea</p></li>
+	<li id="rb"><i></i><p>Japan</p></li>
+	<li id="tw"><i></i><p>Taiwan</p></li>
+	<li id="yd"><i></i><p>India</p></li>
+	<li id="tg"><i></i><p>Thailand</p></li>
+	<li id="yn"><i></i><p>Vietnam</p></li>
+	<li id="jpz"><i></i><p>Cambodia</p></li>
+	<li id="flb"><i></i><p>the Philippines</p></li>
+	<li id="xjp"><i></i><p>Singapore</p></li>
+	<li id="ld" class="bg7"><i class="bg7"></i><p>London</p></li>
+	<li id="flkf" class="bg7"><i class="bg7"></i><p>Frankfurt</p></li>
+	<li id="amstd" class="bg7"><i class="bg7"></i><p>Amsterdam</p></li>
+</ul>
+	</div>
+	<div id="ddos2">
+		<h2>Block any type of DDoS attack</h2>
+		<ul class="clear container">
+			<li><i></i>TCP SYN+ACK</li>
+			<li><i></i>Slowloris</li>
+			<li><i></i>TCP FIN</li>
+			<li><i></i>Mixed SYN+UDP or ICMP+UDP Flood</li>
+			<li><i></i>Spoofing</li>
+			<li><i></i>DNS Flood</li>
+			<li><i></i>TCP RESET</li>
+			<li><i></i>ICMP</li>
+			<li><i></i>NXDomain</li>
+			<li><i></i>TCP ACK</li>
+			<li><i></i>IGMP</li>
+			<li><i></i>Ping of Death</li>
+			<li><i></i>TCP ACK+PSH</li>
+			<li><i></i>HTTP Flood</li>
+			<li><i></i>Smurf</li>
+			<li><i></i>TCP Fragment</li>
+			<li><i></i>Brute Force</li>
+			<li><i></i>UDP</li>
+			<li><i></i>Connection Flood</li>
+			<li><i></i>As well as other attacks</li>
+		</ul>
+	</div>
+	{include file="public/message" }
+</div>
+{include file="public/footer" }
+<script type="text/javascript">
+	$('#menu').on('click',function(){$(this).toggleClass('show');$('body').toggleClass('fix');})
+	$('#navl li').on('click',function(){if($('#menu').is(":visible")){$(this).toggleClass('show').siblings().removeClass('show');}return})
+	$('#budget').click(function(){
+    $(this).find('ol').show();
+  });
+  $('#budget li').click(function(e){
+    var val = $(this).text();
+    $(this).parents('ol').siblings('input').val(val);
+    $('#budget ol').hide();
+    e.stopPropagation();
+  });
+</script>

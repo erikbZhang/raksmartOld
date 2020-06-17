@@ -1,0 +1,103 @@
+<style>
+.layui-table img{
+	max-width:50px;
+	max-height:50px;
+}
+#selected_group_goods .label-title{width:auto;padding-left:0px;}
+#demo1{
+    max-width: 350px;
+    max-height: 200px;
+}
+</style>  
+  <div class="layui-fluid" >
+        <form class="layui-form websearch" action="" id="myForm" >
+			<div class="layui-form" wid100 lay-filter="">
+			  <div class="layui-form-item">
+                <label class="layui-form-label">类型</label>
+                <div class="layui-input-inline" style="width: 250px;">
+                    <input type="text" name="r_type" lay-verify='required' value="{$info.r_type|default=''}" class="layui-input" >
+					<!-- <select name="r_type">
+                        <option value="">请选择</option>
+                        {volist name="reseller_info" id="vo"}
+                        <option  {if condition="$info['r_type'] eq $key"} selected {/if} value="{$key}" >{$vo}</option>
+                        {/volist}
+                    </select> -->
+                </div>
+                <div class="layui-form-mid layui-word-aux">&nbsp;</div>
+              </div>
+			  <div class="layui-form-item">
+                <label class="layui-form-label">消费金额</label>
+                <div class="layui-input-inline" style="width: 250px;">
+                  <input type="text" name="r_money" lay-verify='required' value="{$info.r_money|default=''}" class="layui-input" >
+                </div>
+                <div class="layui-form-mid layui-word-aux">&nbsp;</div>
+              </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">折扣</label>
+                    <div class="layui-input-inline" style="width: 250px;">
+                        <input type="text" name="r_zhe"value="{$info.r_zhe|default=''}" class="layui-input">
+                    </div>
+                    <div class="layui-form-mid layui-word-aux">%</div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">资源</label>
+                    <div class="layui-input-inline" style="width: 250px;">
+                        <input type="text" name="r_resource"value="{$info.r_resource|default=''}" class="layui-input">
+                    </div>
+                    <div class="layui-form-mid layui-word-aux"></div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">技术支持</label>
+                    <div class="layui-input-inline" style="width: 250px;">
+                        <input type="text" name="r_zc"value="{$info.r_zc|default=''}" class="layui-input">
+                    </div>
+                    <div class="layui-form-mid layui-word-aux"></div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">重装服务器</label>
+                    <div class="layui-input-inline" style="width: 250px;">
+                        <input type="text" name="r_server"value="{$info.r_server|default=''}" class="layui-input">
+                    </div>
+                    <div class="layui-form-mid layui-word-aux"></div>
+                </div>
+			  <input type="hidden" name="id" value="{$info.id|default=''}">
+              <div class="layui-form-item">
+                <div class="layui-input-block">
+                   <button style="margin-left:15%;" class="layui-btn" type="button" lay-filter="formDemo" lay-submit>保存数据</button>
+                </div>
+              </div>
+            </div>
+			</form>
+  </div>
+  <script>
+  layui.use(['form'], function(){
+	 var $ = layui.jquery;
+	 var form = layui.form;
+		//提交
+		form.on('submit(formDemo)', function(data){
+            var obj = $(this);
+			var formData = $("#myForm").serialize();
+            obj.attr('disabled',true);
+            $.ajax({
+                type:"POST",
+                url:'/admin/reseller/submitedit',
+                data:formData,
+                dataType:"JSON",
+                success:function(data){
+                    if(data.code == 0)
+                    {
+                        layer.msg('保存成功！',{icon:1,time: 2000},function(){
+                            window.parent.location.reload();//刷新父页面
+                            parent.layer.closeAll();
+                        });
+                    }
+                    else{
+                        obj.attr('disabled',false);
+                        layer.msg(data.msg,{icon:2}, function(){ });
+                    }
+                }
+            });
+        });
+  
+  });
+  </script>

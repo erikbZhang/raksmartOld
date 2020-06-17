@@ -1,0 +1,212 @@
+{include file="public/header" }
+{include file="public/nav" }
+{include file="public/index_banner" }
+<style>
+	.new_class{cursor:pointer;}
+	</style>
+<div class="content">
+	<div id="home1" class="container">
+		<h2>Extend Your Services Instantly Across The Globe</h2>
+		<ul class="clear">
+			<li>
+				<a href="{:url('home_en/bare/index')}" target="_blank" style="color:#000;"><div>
+					<img src="__STATIC__/images/index(1).png">
+					<p>Bare Metal Cloud</p>
+					<span class="c2">Deploy Your Global Services Instantly</span>
+				</div></a>
+			</li>
+			<li>
+				<a href="{:url('home_en/solution/index')}"  target="_blank" style="color:#000;"><div>
+					<img src="__STATIC__/images/index(2).png">
+					<p>Managed Colo</p>
+					<span class="c2">One-Stop Service</span>
+				</div></a>
+			</li>
+			<li>
+				<a href="{:url('home_en/privatea/publicindex')}" target="_blank" style="color:#000;"><div>
+					<img src="__STATIC__/images/index(3).png">
+					<p>Public Cloud</p>
+					<span class="c2">Fast, Reliable, Secure Public Cloud</span>
+				</div></a>
+			</li>
+			<li>
+				<a href="{:url('home_en/ddos/index')}" target="_blank" style="color:#000;"><div>
+					<img src="__STATIC__/images/index(4).png">
+					<p>DDoS Mitigation Service</p>
+					<span class="c2">1 Tbps+ Real-time DDoS Mitigation Services</span>
+				</div></a>
+			</li>
+			<li>
+				<a href="{:url('home_en/ddos/sdwan')}" target="_blank" style="color:#000;"><div>
+					<img src="__STATIC__/images/index(5).png">
+					<p>SD-WAN</p>
+					<span class="c2">Interconnect Your Data Centers, Clouds Through Dynamic SD-WAN</span>
+				</div></a>
+			</li>
+			<li>
+				<a href="{:url('home_en/ddos/ipindex')}" target="_blank" style="color:#000;"><div>
+					<img src="__STATIC__/images/index(6).png">
+					<p>IP Transit</p>
+					<span class="c2">Provide IP Transit Services Across The Globe</span>
+				</div></a>
+			</li>
+			<li>
+				<a href="{:url('home_en/ddos/globala')}" target="_blank" style="color:#000;"><div>
+					<img src="__STATIC__/images/index(7).png">
+					<p>Bandwidth Intensive Service</p>
+					<span class="c2">10G+ Dedicated Servers At Full Throttle</span>
+				</div></a>
+			</li>
+			<li>
+				<a href="{:url('home_en/mix/index')}" target="_blank" style="color:#000;"><div>
+					<img src="__STATIC__/images/index(8).png">
+					<p>Multi-Cloud Eco-systems</p>
+					<span class="c2">Cloud Agnostic Solution Across Cloud Platforms</span>
+				</div></a>
+			</li>
+		</ul>
+	</div>
+	<div id="home2" class="bg3 c1">
+		<h2>Our Core Competences</h2>
+		<ul class="container clear">
+			<li>
+				<div>
+					<img src="__STATIC__/images/index(9).png">
+					<p>Cloud Integration Services</p>
+					<span>Integrate Your Services Across Public, Provide and Bare-Metal Cloud Seamlessly</span>
+				</div>
+			</li>
+			<li>
+				<div>
+					<img src="__STATIC__/images/index(10).png">
+					<p>Managed Colocation Capability</p>
+					<span>One-Stop Services Across All Strategic Locations</span>
+				</div>
+			</li>
+			<li>
+				<div>
+					<img src="__STATIC__/images/index(11).png">
+					<p>Global Network Services</p>
+					<span>Agile and Intelligent Network Services Over 1T+ Capability</span>
+				</div>
+			</li>
+			<li>
+				<div>
+					<img src="__STATIC__/images/index(12).png">
+					<p>Superb Management Capability</p>
+					<span>24x7 Support<br>13 Years+ Experience</span>
+				</div>
+			</li>
+		</ul>
+	</div>
+	<div id="home3">
+		<h2>Our Rapidly Expanding Global Footprint</h2>
+		
+		<ul id="map">
+	<img src="__STATIC__/images/map.png" style="display:block;">
+	<li id="btl"><i></i><p>portland</p></li>
+	<li id="shs"><i></i><p>San Jose</p></li>
+	<li id="lsj"><i></i><p>Los Angeles</p></li>
+	<li id="hg"><i></i><p>Korea</p></li>
+	<li id="rb"><i></i><p>Japan</p></li>
+	<li id="tw"><i></i><p>Taiwan</p></li>
+	<li id="yd"><i></i><p>India</p></li>
+	<li id="tg"><i></i><p>Thailand</p></li>
+	<li id="yn"><i></i><p>Vietnam</p></li>
+	<li id="jpz"><i></i><p>Cambodia</p></li>
+	<li id="flb"><i></i><p>the Philippines</p></li>
+	<li id="xjp"><i></i><p>Singapore</p></li>
+	<li id="ld" class="bg7"><i class="bg7"></i><p>London</p></li>
+	<li id="flkf" class="bg7"><i class="bg7"></i><p>Frankfurt</p></li>
+	<li id="amstd" class="bg7"><i class="bg7"></i><p>Amsterdam</p></li>
+</ul>
+	</div>
+	
+	<div id="home4" class="container clear">
+		<h2>News</h2>
+		<div class="bg1">
+			<p><strong>News</strong><a class="c3" href="{:url('home_en/article/news')}">more</a></p>
+			<ul>
+				{if condition="$article['info_new']"}
+				{volist name="$article['info_new']" id="vo"}
+				<li><p class="new_class" data-name="{$vo.a_id|default=''}">[{$vo.c_name|default=""}] {$vo.a_title|default=""}</p><span class="c3">{:date('Y-m-d',$vo['a_updatetime'])}</span></li>
+				{/volist}
+				{/if}
+			</ul>
+		</div>
+		<div class="bg1">
+			<p><strong>Knowledge</strong><a class="c3" href="{:url('home_en/article/news_zhishi')}">more</a></p>
+			<ul>
+				{if condition="$article['info_zhi']"}
+				{volist name="$article['info_zhi']" id="vo"}
+				<li><p class="new_class" data-name="{$vo.a_id|default=''}" >[{$vo.c_name|default=""}] {$vo.a_title|default=""}</p><span class="c3">{:date('Y-m-d',$vo['a_updatetime'])}</span></li>
+				{/volist}
+				{/if}
+			</ul>
+		</div>
+	</div>
+	<div class="container">
+		<div id="home5">
+			<h2>Our Partners</h2>
+			<ul class="clear">
+				{if condition="$partner"}
+				{volist name="$partner" id="vo"}
+				<li><a rel="nofollow"><img alt="{$vo.title|default=''}" src="/uploads/{$vo.thumb|default=''}"></a></li>
+				{/volist}
+				{/if}
+			</ul>
+		</div>
+	</div>
+</div>
+{include file="public/footer" }
+<script type="text/javascript">
+	var mySwiper = new Swiper('#swiper1', {
+		autoplay: {
+			delay: 3000,
+			stopOnLastSlide: false,
+			disableOnInteraction: false
+		},
+		effect : 'fade',
+		pagination: {
+			el: '.swiper-pagination',
+			clickable :true,
+			bulletClass : 'line',
+			bulletActiveClass: 'AC'
+		}
+	});
+	$('#menu').on('click',function(){
+		$(this).toggleClass('show');
+		$('body').toggleClass('fix');
+	})
+	$('#navl li').on('click',function(){
+		if($('#menu').is(":visible")){
+			$(this).toggleClass('show').siblings().removeClass('show');
+		}
+		return
+	})
+	var box0 = $("#home5"),v0 = 1.5;
+	Rin(box0,v0);
+	function Rin($Box,v){
+		var $Box_ul = $Box.find("ul"),$Box_li = $Box_ul.find("li"),left = 0,s=0,timer;
+		$Box_li.each(function(index){s += $(this).outerWidth(true);})
+		window.startroll = window.startroll||function(Tmove){return setTimeout(Tmove,1000/60)};
+		window.stoproll = window.stoproll||clearTimeout;
+		if( s>=$Box.width()){
+			$Box_li.clone(true).appendTo($Box_ul);
+			Tmove();
+			function Tmove(){
+				left -= v;
+				if(left <= -s){left = 0;$Box_ul.css("left",left)}else{ $Box_ul.css("left",left) }
+				timer = startroll(Tmove);
+			}$Box_ul.hover(function(){stoproll(timer)},function(){Tmove()})
+		}
+	};
+</script>
+<script type="text/javascript">
+	$(function(){
+		$(".new_class").click(function(e){
+			var a_id = $(this).attr("data-name");
+			$(window).attr('location',"{:url('home_en/article/details')}?a_id="+a_id );
+		});
+	});
+</script>

@@ -1,0 +1,286 @@
+{include file="../application/common/view/header.html" /}
+<div id="LAY_app">
+    <div class="layui-layout layui-layout-admin">
+      <div class="layui-header">
+        <!-- 头部区域 -->
+        <ul class="layui-nav layui-layout-left">
+          <li class="layui-nav-item layadmin-flexible" lay-unselect>
+            <a href="javascript:;" layadmin-event="flexible" title="侧边伸缩">
+              <i class="layui-icon layui-icon-shrink-right" id="LAY_app_flexible"></i>
+            </a>
+          </li>
+          <li class="layui-nav-item" lay-unselect>
+            <a href="javascript:;" layadmin-event="refresh" title="刷新">
+              <i class="layui-icon layui-icon-refresh-3"></i>
+            </a>
+          </li>
+        </ul>
+		<ul class="layui-nav layui-layout-right" style="margin-right:10%;"   lay-filter="layadmin-layout-right">
+		<li class="layui-nav-item" style="width:99px;" lay-unselect>
+            <a href="javascript:;">
+              <cite style="color:green;">
+			  {if(session('banben_english') == 1)}
+			  中文版
+			  {elseif(session('banben_english') == 2) }
+			  English
+			  {else/}
+			  中文版
+			  {/if}
+			  </cite>
+            </a>
+            <dl class="layui-nav-child" style="padding-left:9px;">
+              <dd><a href="/admin/user/china?english=1" >中文版</a></dd>
+              <hr>
+			  <dd><a href="/admin/user/china?english=2" >English</a></dd>
+            </dl>
+          </li> 
+		</ul>
+		
+         <ul class="layui-nav layui-layout-right"   lay-filter="layadmin-layout-right">
+          
+        <!--   <li class="layui-nav-item" lay-unselect>
+            <a lay-href="app/message/index.html" layadmin-event="message" lay-text="消息中心">
+              <i class="layui-icon layui-icon-notice"></i>  --> 
+              
+              <!-- 如果有新消息，则显示小圆点 -->
+          <!--     <span class="layui-badge-dot"></span>
+            </a>
+          </li>   
+		  -->  
+		  
+          <li class="layui-nav-item layui-hide-xs" lay-unselect>
+            <a href="javascript:;" layadmin-event="fullscreen">
+              <i class="layui-icon layui-icon-screen-full"></i>
+            </a>
+          </li>
+          <li class="layui-nav-item" lay-unselect>
+            <a href="javascript:;">
+              <cite>{:session('user_info.account')}</cite>
+            </a>
+            <dl class="layui-nav-child">
+              <dd><a lay-href="/admin/user/changepassword" >修改密码</a></dd>
+              <hr>
+			  {if(session('user_info.id') == 1)}
+			  <dd><a lay-src="/admin/user/clearCache" href="javascript:void(0);">清空缓存</a></dd>
+              <hr>
+			  {/if}
+              <dd id="user_logout" style="text-align: center;"><a href="{:url('admin/user/logout')}">退出</a></dd>
+            </dl>
+          </li>
+          
+		  
+          <li class="layui-nav-item layui-show-xs-inline-block layui-hide-sm" lay-unselect>
+            <a href="javascript:;" layadmin-event="more"><i class="layui-icon layui-icon-more-vertical"></i></a>
+          </li>
+        </ul>
+      </div>
+      <!-- 侧边菜单 -->
+      <div class="layui-side layui-side-menu">
+        <div class="layui-side-scroll">
+          <div class="layui-logo" lay-href="/admin/index/home">
+            <span>后台管理系统</span>
+          </div>
+		    <!-- 左侧菜单 开始 -->
+          <?php $menu = session('menu_list');?>
+          <ul class="layui-nav layui-nav-tree" lay-shrink="all" id="LAY-system-side-menu" lay-filter="layadmin-system-side-menu">
+            
+			<li data-name="home" class="layui-nav-item">
+              <a href="javascript:;" lay-tips="xitong" lay-direction="2">
+                <i class="layui-icon layui-icon-home"></i>
+                <cite>系统设置</cite>
+              </a>
+              <dl class="layui-nav-child">
+                <dd data-name="console" >
+                  <a lay-href="/admin/banner/index">轮播图管理</a>
+                </dd>
+              </dl>
+			  <dl class="layui-nav-child">
+                <dd data-name="console" >
+                  <a lay-href="/admin/message/index">留言管理</a>
+                </dd>
+              </dl>
+              <dl class="layui-nav-child">
+                <dd data-name="console" >
+                  <a lay-href="/admin/partner/index">合作伙伴</a>
+                </dd>
+              </dl>
+              <dl class="layui-nav-child">
+                <dd data-name="console" >
+                  <a lay-href="/admin/reseller/index">代理商折扣</a>
+                </dd>
+              </dl>
+              <dl class="layui-nav-child">
+                <dd data-name="console" >
+                  <a lay-href="/admin/config/index">配置设置</a>
+                </dd>
+              </dl>
+            </li>
+            <!--<li data-name="home" class="layui-nav-item">
+              <a href="javascript:;" lay-tips="luoji" lay-direction="2">
+                <i class="layui-icon layui-icon-username"></i>
+                <cite>会员管理</cite>
+              </a>
+              <dl class="layui-nav-child">
+                <dd data-name="console" >
+                  <a lay-href="/admin/member/index">会员管理</a>
+                </dd>
+              </dl>
+            </li>-->
+			<li data-name="home" class="layui-nav-item">
+              <a href="javascript:;" lay-tips="luoji" lay-direction="2">
+                <i class="layui-icon layui-icon-transfer"></i>
+                <cite>裸机云管理</cite>
+              </a>
+              <dl class="layui-nav-child">
+                <dd data-name="console" >
+                  <a lay-href="/admin/luoji/area">地区管理</a>
+                </dd>
+              </dl>
+			  <dl class="layui-nav-child">
+                <dd data-name="console" >
+                  <a lay-href="/admin/luoji/product">产品管理</a>
+                </dd>
+              </dl>
+            </li>
+			<li data-name="home" class="layui-nav-item">
+              <a href="javascript:;" lay-tips="luoji" lay-direction="2">
+                <i class="layui-icon layui-icon-website"></i>
+                <cite>大宽带服务器</cite>
+              </a>
+              <dl class="layui-nav-child">
+                <dd data-name="console" >
+                  <a lay-href="/admin/luoji/area?type=2">地区管理</a>
+                </dd>
+              </dl>
+			  <dl class="layui-nav-child">
+                <dd data-name="console" >
+                  <a lay-href="/admin/luoji/product?type=2">产品管理</a>
+                </dd>
+              </dl>
+            </li>
+			<li data-name="home" class="layui-nav-item">
+              <a href="javascript:;" lay-tips="luoji" lay-direction="2">
+                <i class="layui-icon layui-icon-senior"></i>
+                <cite>定制服务器</cite>
+              </a>
+              <dl class="layui-nav-child">
+                <dd data-name="console" >
+                  <a lay-href="/admin/ding/dic">参数管理</a>
+                </dd>
+              </dl>
+			  <dl class="layui-nav-child">
+                <dd data-name="console" >
+                  <a lay-href="/admin/ding/ding">定制数据列表</a>
+                </dd>
+              </dl>
+            </li>
+			<li data-name="home" class="layui-nav-item">
+              <a href="javascript:;" lay-tips="luoji" lay-direction="2">
+                <i class="layui-icon layui-icon-template-1"></i>
+                <cite>全球网络测试</cite>
+              </a>
+              <dl class="layui-nav-child">
+                <dd data-name="console" >
+                  <a lay-href="/admin/network/index">全球网络测试</a>
+                </dd>
+              </dl>
+            </li>
+            <li data-name="home" class="layui-nav-item">
+              <a href="javascript:;" lay-tips="luoji" lay-direction="2">
+                <i class="layui-icon layui-icon-template-1"></i>
+                <cite>公有云配置产品</cite>
+              </a>
+              <dl class="layui-nav-child">
+                <dd data-name="console" >
+                  <a lay-href="/admin/configuration/type">产品类型</a>
+                </dd>
+              </dl>
+              <dl class="layui-nav-child">
+                <dd data-name="console" >
+                  <a lay-href="/admin/configuration/index">配置产品</a>
+                </dd>
+              </dl>
+            </li>
+            <li data-name="home" class="layui-nav-item">
+              <a href="javascript:;" lay-tips="luoji" lay-direction="2">
+                <i class="layui-icon layui-icon-template-1"></i>
+                <cite>服务器托管</cite>
+              </a>
+              <dl class="layui-nav-child">
+                <dd data-name="console" >
+                  <a lay-href="/admin/fuwu/type">产品类型</a>
+                </dd>
+              </dl>
+              <dl class="layui-nav-child">
+                <dd data-name="console" >
+                  <a lay-href="/admin/fuwu/index">配置产品</a>
+                </dd>
+              </dl>
+            </li>
+			<li data-name="home" class="layui-nav-item">
+              <a href="javascript:;" lay-tips="luoji" lay-direction="2">
+                <i class="layui-icon layui-icon-read"></i>
+                <cite>新闻咨询管理</cite>
+              </a>
+              <dl class="layui-nav-child">
+                <dd data-name="console" >
+                  <a lay-href="/admin/article_cat/index">分类管理</a>
+                </dd>
+				<dd data-name="console" >
+                  <a lay-href="/admin/article/index">文章管理</a>
+                </dd>
+              </dl>
+            </li>
+            <li data-name="home" class="layui-nav-item">
+              <a href="javascript:;" lay-tips="luoji" lay-direction="2">
+                <i class="layui-icon layui-icon-read"></i>
+                <cite>后台账号</cite>
+              </a>
+              <dl class="layui-nav-child">
+                <dd data-name="console" >
+                  <a lay-href="/admin/user/index">用户管理</a>
+                </dd>
+              </dl>
+            </li>
+			
+			</ul> 
+			  <!-- 左侧菜单 结束 -->
+        </div>
+      </div>
+
+      <!-- 页面标签 -->
+      <div class="layadmin-pagetabs" id="LAY_app_tabs">
+        <div class="layui-icon layadmin-tabs-control layui-icon-prev" layadmin-event="leftPage"></div>
+        <div class="layui-icon layadmin-tabs-control layui-icon-next" layadmin-event="rightPage"></div>
+        <div class="layui-icon layadmin-tabs-control layui-icon-down">
+          <ul class="layui-nav layadmin-tabs-select" lay-filter="layadmin-pagetabs-nav">
+            <li class="layui-nav-item" lay-unselect>
+              <a href="javascript:;"></a>
+              <dl class="layui-nav-child layui-anim-fadein">
+                <dd layadmin-event="closeThisTabs"><a href="javascript:;">关闭当前标签页</a></dd>
+                <dd layadmin-event="closeOtherTabs"><a href="javascript:;">关闭其它标签页</a></dd>
+                <dd layadmin-event="closeAllTabs"><a href="javascript:;">关闭全部标签页</a></dd>
+              </dl>
+            </li>
+          </ul>
+        </div>
+        <div class="layui-tab" lay-unauto lay-allowClose="true" lay-filter="layadmin-layout-tabs">
+          <ul class="layui-tab-title" id="LAY_app_tabsheader">
+            <li lay-id="/admin/index/home" lay-attr="/admin/index/home" class="layui-this"><i class="layui-icon layui-icon-home"></i></li>
+          </ul>
+        </div>
+      </div>
+      
+      
+      <!-- 主体内容 -->
+      <div class="layui-body" id="LAY_app_body">
+        <div class="layadmin-tabsbody-item layui-show">
+          <iframe src="/admin/index/home" frameborder="0" class="layadmin-iframe"></iframe>
+        </div>
+      </div>
+      
+      <!-- 辅助元素，一般用于移动设备下遮罩 -->
+      <div class="layadmin-body-shade" layadmin-event="shade"></div>
+    </div>
+  </div>
+{include file="../application/common/view/footer.html" /}

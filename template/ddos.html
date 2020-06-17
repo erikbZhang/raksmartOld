@@ -1,0 +1,78 @@
+{include file="public/header" }
+{include file="public/nav" }
+{include file="public/banner_b" }
+<div class="content">
+	<div id="gl1" class="bg2">
+		<img src="__STATIC__/images/ddos(1).png" alt="">
+		<h2>您为什么需要 DDoS 保护？</h2>
+		<p class="container">顶级数据中心供应商和多运营商网络开展合作，致力于增强带宽容量和路由器多样性，打造自动化解决方案 在海量 DDoS 攻击中，为您提供长效防护。我们的安全专家提供全天候（24x7x365）管理和监控服务，为客户网络资源提供全面的保护</p>
+		<img id="ddosimg" src="__STATIC__/images/ddos(2).png" alt="">
+	</div>
+	<div id="ddos1" class="c1 pc">
+		<h2>保护您的服务器免遭 DDoS 攻击</h2>
+		<p class="container">与我们的专家联系，了解如何自我保护，免遭此类攻击！即使出现潜在攻击，也能使您的服务器保持正常运行</p>
+		<a class="c1 btb" role="button" href="{:url('home/all/contact')}">联系我们</a>
+	</div>
+	<div id="home3" class="sd2">
+		<h2 style="padding-bottom:40px;">全球数据中心网络 拓展全球业务</h2>
+		<p class="container">我们的数据中心遍布全球 ，拥有极佳地理冗余，能对延迟实现理想优化，拥有规模最大的光纤对接，数据中心均为运营商中立数据中心，由顶级提供商提供相关服务</p>
+		<ul id="map">
+	<img src="__STATIC__/images/map.png" style="display:block;">
+	<li id="btl"><i></i><p>波特兰</p></li>
+	<li id="shs"><i></i><p>圣何塞</p></li>
+	<li id="lsj"><i></i><p>洛杉矶</p></li>
+	<li id="hg"><i></i><p>韩国</p></li>
+	<li id="rb"><i></i><p>日本</p></li>
+	<li id="tw"><i></i><p>台湾</p></li>
+	<li id="yd"><i></i><p>印度</p></li>
+	<li id="tg"><i></i><p>泰国</p></li>
+	<li id="yn"><i></i><p>越南</p></li>
+	<li id="jpz"><i></i><p>柬埔寨</p></li>
+	<li id="flb"><i></i><p>菲律宾</p></li>
+	<li id="xjp"><i></i><p>新加坡</p></li>
+	<li id="ld" class="bg7"><i class="bg7"></i><p>伦敦</p></li>
+	<li id="flkf" class="bg7"><i class="bg7"></i><p>法兰克福</p></li>
+	<li id="amstd" class="bg7"><i class="bg7"></i><p>阿姆斯特丹</p></li>
+</ul>
+	</div>
+	<div id="ddos2">
+		<h2>阻止任何类型的 DDoS 攻击</h2>
+		<ul class="clear container">
+			<li><i></i>TCP SYN+ACK</li>
+			<li><i></i>Slowloris</li>
+			<li><i></i>TCP FIN</li>
+			<li><i></i>Mixed SYN+UDP or ICMP+UDP Flood</li>
+			<li><i></i>Spoofing</li>
+			<li><i></i>DNS Flood</li>
+			<li><i></i>TCP RESET</li>
+			<li><i></i>ICMP</li>
+			<li><i></i>NXDomain</li>
+			<li><i></i>TCP ACK</li>
+			<li><i></i>IGMP</li>
+			<li><i></i>Ping of Death</li>
+			<li><i></i>TCP ACK+PSH</li>
+			<li><i></i>HTTP Flood</li>
+			<li><i></i>Smurf</li>
+			<li><i></i>TCP Fragment</li>
+			<li><i></i>Brute Force</li>
+			<li><i></i>UDP</li>
+			<li><i></i>Connection Flood</li>
+			<li><i></i>As well as other attacks</li>
+		</ul>
+	</div>
+	{include file="public/message" }
+</div>
+{include file="public/footer" }
+<script type="text/javascript">
+	$('#menu').on('click',function(){$(this).toggleClass('show');$('body').toggleClass('fix');})
+	$('#navl li').on('click',function(){if($('#menu').is(":visible")){$(this).toggleClass('show').siblings().removeClass('show');}return})
+	$('#budget').click(function(){
+    $(this).find('ol').show();
+  });
+  $('#budget li').click(function(e){
+    var val = $(this).text();
+    $(this).parents('ol').siblings('input').val(val);
+    $('#budget ol').hide();
+    e.stopPropagation();
+  });
+</script>

@@ -1,0 +1,20 @@
+<div id="swiper1" class="swiper-container">
+	<div class="swiper-wrapper">
+		{volist name="banner_info" id="vo"}
+		<div class="swiper-slide">
+		{if condition="$vo['img_url2']"}
+			<img class="phone" src="/uploads/{$vo.img_url2|default=''}">
+			{/if}
+			{if condition="$vo['img_url']"}
+			<img class="pc" src="/uploads/{$vo.img_url|default=''}">
+			{/if}
+			<div class="slide-txt c1">
+				<h1>{$vo.name|default=''}</h1>
+				<p>{$vo.con|default=''}</p>
+		<a class="c1 btb lz_cbl" role="button"  href="javascript:void(window.open('https://livezilla.raksmart.com/livezilla/chat.php?hfk=MQ__','','width=400,height=600,left=0,top=0,resizable=yes,menubar=no,location=no,status=yes,scrollbars=yes'))">去咨询</a>	
+		</div>
+		</div>
+		{/volist}
+	</div>
+	<div class="swiper-pagination"></div>
+</div>

@@ -1,0 +1,162 @@
+{include file="public/header" }
+{include file="public/nav" }
+{include file="public/banner_b" }
+<div class="content">
+	<div id="bare1">
+		<h2>Configure Your Bandwidth Intensive Servers</h2>
+		<div class="container pc" style="position:relative;">
+			<div class="tab">
+				<ul>
+					{if condition="$area_info"}
+					{volist name="area_info" id="vo"}
+					<li {if condition="$key eq 0"}class="light" {/if} >{$vo.area_name|default=""}</li>
+					{/volist}
+					{/if}
+				</ul>
+			</div>
+		</div>
+		<ul class="card bg2 pc">
+			{if condition="$area_info"}
+			{volist name="area_info" id="vo"}
+			<li class="container" {if condition="$key eq 0"} style="display: list-item;" {/if} >
+			<table class="bg1">
+				<tr>
+					<th>Product</th>
+					<th>RAM</th>
+					<th>DISK</th>
+					<th>PORT</th>
+					<th>TRAFFIC</th>
+					<th>IP</th>
+					<th>DDOS MITIGATION</th>
+					<th>PRICE</th>
+				</tr>
+				{if condition="$vo['product'] neq ''"}
+				{volist name="vo['product']" id="voo"}
+				<tr>
+					<td>{$voo.p_name|default=''}</td>
+					<td>{$voo.p_nc|default=''}</td>
+					<td>{$voo.p_yp|default=''}</td>
+					<td>{$voo.p_kd|default=''}</td>
+					<td>{$voo.p_ll|default=''}</td>
+					<td>{$voo.p_ip|default=''}</td>
+					<td>{$voo.ddos|default=''}</td>
+					<td>${$voo.p_money|default=''}</td>
+					<td><a class="btb c1" target="__blank" {if condition="$voo['p_url']"} href="{$voo['p_url']|default=''}" {else/} href="javascript:;" {/if}>LIVE CHAT</a></td>
+				</tr>
+				{/volist}
+				{/if}
+			</table>
+			</li>
+			{/volist}
+			{/if}
+		</ul>
+		<div class="container phone" style="position:relative;">
+			<div class="swiper-container tab1">
+				<ul class="swiper-wrapper">
+					{if condition="$area_info"}
+					{volist name="area_info" id="vo"}
+					<li class="{if condition="$key eq 0"} light {/if} swiper-slide">{$vo.area_name|default=""}</li>
+					{/volist}
+					{/if}
+				</ul>
+			</div>
+		</div>
+		<ul class="bg2 phone card2">
+			{if condition="$area_info"}
+			{volist name="area_info" id="vo"}
+			{if condition="$key eq 0"}
+			<li class="container swiper-container swiper2" style="display: list-item;">
+				{else/}
+			<li class="container swiper-container swiper2">
+				{/if}
+				<ul class="clear swiper-wrapper">
+					{if condition="$vo['product'] neq ''"}
+					{volist name="vo['product']" id="voo"}
+					<li class="swiper-slide">
+						<div class="bg1">
+							<p>Product <span>{$voo.p_name|default=''}</span></p>
+							<p>RAM <span>{$voo.p_nc|default=''}</span></p>
+							<p>DISK <span>{$voo.p_yp|default=''}</span></p>
+							<p>PORT <span>{$voo.p_kd|default=''}</span></p>
+							<p>TRAFFIC <span>{$voo.p_ll|default=''}</span></p>
+							<p>IP <span>{$voo.p_ip|default=''}</span></p>
+							<p>DDOS MITIGATION<span>{$voo.ddos|default=''}</span></p>
+							<p>PRICE<span class='c4'>${$voo.p_money|default=''}</span></p>
+							<a class="btb c1" target="__blank" {if condition="$voo['p_url']"}  href="{$voo['p_url']|default=''}" {else/} href="javascript:;" {/if}>LIVE CHAT</a>
+						</div>
+					</li>
+					{/volist}
+					{/if}
+				</ul>
+				<div class="swiper-pagination"></div>
+			</li>
+			{/volist}
+			{/if}
+		</ul>
+	</div>
+
+	<div id="bare2" class="container">
+		<h2>Our Advantages</h2>
+		<ul class="clear">
+		<li>
+			<div class="bg1">
+				<img src="/uploads/20200409/87e5cf895b5a5f40575ef7918da90b2c.png" alt="Global Deployment">
+				<p>Global Deployment</p>
+				<span class="c2">10-100G Per Server Deployment</span>
+			</div>
+		</li>
+		<li>
+			<div class="bg1">
+				<img src="/uploads/20200409/550b7fd56216957bb8aa92a4bd89e2ed.png" alt="Customization">
+				<p>Customization</p>
+				<span class="c2">Customized Hardware, Port, IP and Network Configuration</span>
+			</div>
+		</li>
+		<li>
+			<div class="bg1">
+				<img src="/uploads/20200409/04ef2013c780520abbf00bd41af3cc7f.png" alt="DDOS Mitigation">
+				<p>DDOS Mitigation</p>
+				<span class="c2">24x7 SOC Support From Experienced Security Team</span>
+			</div>
+		</li>
+		<li>
+			<div class="bg1">
+				<img src="/uploads/20200409/837c1a12e8abe4e1a57958c3df9e459e.png" alt="Self-Service Capability & Control">
+				<p>Self-Service Capability & Control</p>
+				<span class="c2">Root Access, Rich Self-Service Capability With Full Usage & Security Visibility</span>
+			</div>
+		</li>
+		</ul>
+	</div>
+</div>
+{include file="public/footer" }
+<script type="text/javascript">
+	$('#menu').on('click',function(){$(this).toggleClass('show');$('body').toggleClass('fix');})
+	$('#navl li').on('click',function(){if($('#menu').is(":visible")){$(this).toggleClass('show').siblings().removeClass('show');}return})
+	$('#bare1 .tab li').on('click',function(){$(this).addClass("light").siblings().removeClass('light');$("#bare1 .card li").hide().eq($(this).index()).show();})
+	$('#bare1 .tab1 li').on('click',function(){$(this).addClass("light").siblings().removeClass('light');$("#bare1 .card2>li").hide().eq($(this).index()).show();})
+
+  var tab= new Swiper('#bare1 .tab1',{
+  	freeMode: true,
+		centeredSlides : true,
+		centeredSlidesBounds:true,
+		slidesPerView: 'auto',
+  })
+  var mySwiper2 = new Swiper('.swiper2',{
+		effect : 'coverflow',
+		loop:true,
+		slidesPerView: 1.5,
+		centeredSlides: true,
+	  observer: true,
+	  coverflowEffect: {
+	    rotate:50,
+	    // stretch: 0,
+	    depth: 60,
+	    modifier: 1,
+	    slideShadows : false
+	  },
+	  pagination: {
+	    el: '.swiper-pagination',
+	  },
+	})
+</script>

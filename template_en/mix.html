@@ -1,0 +1,73 @@
+{include file="public/header" }
+{include file="public/nav" }
+{include file="public/banner_b" }
+<div class="content">
+	<div id="mix1" class="bg2">
+		<h2>Cloud connected</h2>
+		<p class="container">Cloud interconnection takes SDN technology as the core, and based on global PoP points, provides dedicated line connection between public cloud and public cloud, as well as between public cloud and data center, to help users realize intra-city or trans-regional cloud upper cloud and lower cloud data interchange, and quickly build a hybrid cloud usage environment</p>
+		<img class="pc" src="__STATIC__/images-en/mix(1)-en.png" style="padding-bottom:50px;" alt="">
+		<img class="phone" src="__STATIC__/images-en/mix(1)-1-en.png" alt="" style="padding-bottom:20px;">
+	</div>
+	<!--为什么选择裸机云-->
+	<div id="bare2" class="container">
+		<h2>Advantages</h2>
+		<ul class="clear">
+			<li>
+				<div class="bg1" style="height:120px;">
+					<img src="__STATIC__/images/bare(1).png" alt="">
+					<p>Fast, Reliable</p>
+					<span class="c2">99.99% SLA</span>
+				</div>
+			</li>
+			<li>
+				<div class="bg1" style="height:120px;">
+					<img src="__STATIC__/images/bare(2).png" alt="">
+					<p>Intelligent Platform</p>
+					<span class="c2">Easy To Use Dashboard</span>
+				</div>
+			</li>
+			<li>
+				<div class="bg1" style="height:120px;">
+					<img src="__STATIC__/images/bare(3).png" alt="">
+					<p>Managed Service</p>
+					<span class="c2">24x7 Support</span>
+				</div>
+			</li>
+			<li>
+				<div class="bg1" style="height:120px;">
+					<img src="__STATIC__/images/bare(4).png" alt="">
+					<p>Valuable Eco-systems</p>
+					<span class="c2">Access To Value Through Largest Clouds In The World</span>
+				</div>
+			</li>
+		</ul>
+	</div>
+	<!--为什么选择裸机云 end-->
+	<div id="mix2" class="bg1">
+		<h2>Use Cases</h2>
+		<div class="bg3">
+			<ul class="container clear">
+				<li><img class="pc" src="__STATIC__/images/mix(7).png" alt=""><img class="phone" src="__STATIC__/images/mix(7)-1.png" alt=""><a href="javascript:;"><span class="c1">Gaming</span></a></li>
+				<li><img class="pc" src="__STATIC__/images/mix(8).png" alt=""><img class="phone" src="__STATIC__/images/mix(8)-1.png" alt=""><a href="javascript:;"><span class="c1">Live Streaming</span></a></li>
+				<li><img class="pc" src="__STATIC__/images/mix(9).png" alt=""><img class="phone" src="__STATIC__/images/mix(9)-1.png" alt=""><a href="javascript:;"><span class="c1">Online Education</span></a></li>
+				<li><img class="pc" src="__STATIC__/images/mix(10).png" alt=""><img class="phone" src="__STATIC__/images/mix(10)-1.png" alt=""><a href="javascript:;"><span class="c1">CDN</span></a></li>
+				<li><img class="pc" src="__STATIC__/images/mix(11).png" alt=""><img class="phone" src="__STATIC__/images/mix(11)-1.png" alt=""><a href="javascript:;"><span class="c1">Mobile Internet</span></a></li>
+			</ul>
+		</div>
+	</div>
+	{include file="public/message" }<!--留言-->
+</div>
+{include file="public/footer" }
+<script type="text/javascript">
+	$('#menu').on('click',function(){$(this).toggleClass('show');$('body').toggleClass('fix');})
+	$('#navl li').on('click',function(){if($('#menu').is(":visible")){$(this).toggleClass('show').siblings().removeClass('show');}return})
+	$('#budget').click(function(){
+    $(this).find('ol').show();
+  });
+  $('#budget li').click(function(e){
+    var val = $(this).text();
+    $(this).parents('ol').siblings('input').val(val);
+    $('#budget ol').hide();
+    e.stopPropagation();
+  });
+</script>

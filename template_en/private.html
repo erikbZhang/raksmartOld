@@ -1,0 +1,39 @@
+{include file="public/header" }
+{include file="public/nav" }
+{include file="public/banner_b" }
+<div class="content">
+	<div id="syy1" class="bg2">
+		<h2>Private Cloud Hosting</h2>
+		<p class="container">Running Private Cloud Is Challenging, Especially Related To Designing, Deploying and Operating Private Clouds. We Make It Easier For Our Customers With Our One-Stop Service For The Entire Life Cycle Of Operating A Private Cloud On Your Own</p>
+		<img src="__STATIC__/images-en/syy(1)-en.png" alt="">
+	</div>
+	<div id="syy2" class="bg1">
+		<h2>Private Cloud Hosting</h2>
+		<p class="syy2-title">Bussniss Network</p>
+		<img class="pc" src="__STATIC__/images/syy(2).png">
+		<img class="phone" src="__STATIC__/images/syy(2)-1.png" alt="">
+		
+		<p class="syy2-title1">Platform Agnostic Private Cloud Solutions</p>
+		<p>
+			{if condition="$banner_info_two"}
+			{volist name="banner_info_two" id="vo"}
+			<img alt="{$vo.name|default=''}" src="/uploads/{$vo.img_url|default=''}">
+			{/volist}
+			{/if}
+		</p>
+	</div>
+	{include file="public/message" }
+</div>
+{include file="public/footer" }
+<script type="text/javascript">
+	$('#menu').on('click',function(){$(this).toggleClass('show');$('body').toggleClass('fix');})
+	$('#navl li').on('click',function(){if($('#menu').is(":visible")){$(this).toggleClass('show').siblings().removeClass('show');}return})
+	
+	$('#budget').click(function(){$(this).find('ol').show();});
+  $('#budget li').click(function(e){
+    var val = $(this).text();
+    $(this).parents('ol').siblings('input').val(val);
+    $('#budget ol').hide();
+    e.stopPropagation();
+  });
+</script>

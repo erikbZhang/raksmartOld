@@ -1,0 +1,83 @@
+{include file="public/header" }
+{include file="public/nav" }
+{include file="public/banner_b" }
+<div class="content">
+	<div id="sd1" class="container bg1">
+		<h2>帮您轻松应对业务挑战</h2>
+		<p>RAKsmart 提供强大的云+网连接平台，包括混合云专线、雾计算、IT基础设施、智能运维、产品生命周期的综合服务，解决企业的痛点</p>
+		<ul class="clear">
+      <li>
+        <img src="__STATIC__/images/sd(1).png" alt="">
+        <p>上云困扰</p>
+        <span class="c2">与多公有云互联，助力企业快速上云</span>
+      </li>
+      <li>
+        <img src="__STATIC__/images/sd(2).png" alt="">
+        <p>高开发访问</p>
+        <span class="c2">轻松应对海量用户与服务器访问高峰带来的空前压力</span>
+      </li>
+      <li>
+        <img src="__STATIC__/images/sd(3).png" alt="">
+        <p>高丢包率</p>
+        <span class="c2">解决网络运行高峰导致丢包问题</span>
+      </li>
+      <li>
+        <img src="__STATIC__/images/sd(4).png" alt="">
+        <p>高延时</p>
+        <span class="c2">避免公网路由器拥堵导致的高延时</span>
+      </li>
+      <li>
+        <img src="__STATIC__/images/sd(5).png" alt="">
+        <p>数据同步</p>
+        <span class="c2">实现多服务商间数据的高效实时同步</span>
+      </li>
+      <li>
+        <img src="__STATIC__/images/sd(6).png" alt="">
+        <p>多网络管理困难</p>
+        <span class="c2">多地部署，多种网络环境管理困难</span>
+      </li>
+    </ul>
+	</div>
+	<div id="home3" class="sd2 bg1">
+		<h2>全球 SDC-WAN 网络-连接无处不在</h2>
+		<p>RAKsmart 全球拥有200多个POP节点，为用户提供平台化、专业化的“云+网”服务，助理企业业务广泛拓展</p>
+		<ul id="map">
+			<img src="__STATIC__/images/map.png" style="display:block;">
+			<li id="btl"><i></i><p>波特兰</p></li>
+			<li id="shs"><i></i><p>圣何塞</p></li>
+			<li id="lsj"><i></i><p>洛杉矶</p></li>
+			<li id="hg"><i></i><p>韩国</p></li>
+			<li id="rb"><i></i><p>日本</p></li>
+			<li id="tw"><i></i><p>台湾</p></li>
+			<li id="yd"><i></i><p>印度</p></li>
+			<li id="tg"><i></i><p>泰国</p></li>
+			<li id="yn"><i></i><p>越南</p></li>
+			<li id="jpz"><i></i><p>柬埔寨</p></li>
+			<li id="flb"><i></i><p>菲律宾</p></li>
+			<li id="xjp"><i></i><p>新加坡</p></li>
+			<li id="ld" class="bg7"><i class="bg7"></i><p>伦敦</p></li>
+			<li id="flkf" class="bg7"><i class="bg7"></i><p>法兰克福</p></li>
+			<li id="amstd" class="bg7"><i class="bg7"></i><p>阿姆斯特丹</p></li>
+		</ul>
+	</div>
+	<div id="sd3" class="bg2">
+		<h2>智能网络运营商</h2>	
+		<p class="container">基于“云+网”的服务，通过SDN网络构建，实现多服务商（公有云、ISP、IDC混合云服务商）与用户间的快速连接</p>
+		<img src="__STATIC__/images/sd(7).png">
+	</div>
+	{include file="public/message" }
+</div>
+{include file="public/footer" }
+<script type="text/javascript">
+	$('#menu').on('click',function(){$(this).toggleClass('show');$('body').toggleClass('fix');})
+	$('#navl li').on('click',function(){if($('#menu').is(":visible")){$(this).toggleClass('show').siblings().removeClass('show');}return})
+	$('#budget').click(function(){
+    $(this).find('ol').show();
+  });
+  $('#budget li').click(function(e){
+    var val = $(this).text();
+    $(this).parents('ol').siblings('input').val(val);
+    $('#budget ol').hide();
+    e.stopPropagation();
+  });
+</script>

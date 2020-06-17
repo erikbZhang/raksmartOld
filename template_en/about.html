@@ -1,0 +1,78 @@
+{include file="public/header" }
+{include file="public/nav" }
+{include file="public/banner_b" }
+<div class="content">
+	<div id="sd1" class="container re1">
+		<h2>RAKSMART</h2>
+		<ul class="clear">
+      <li>
+        <div class="bg1">
+        	<img src="__STATIC__/images/about(1).png" alt="">
+	        <p>One-Stop Service</p>
+	        <span class="c2">ICT Solution, Site Selection, Hardware Procurement, Connectivity, Deployment, Maintenance and Support</span>
+        </div>
+      </li>
+      <li>
+      	<div class="bg1">
+	        <img src="__STATIC__/images/about(2).png" alt="">
+	        <p>Attractive Margins</p>
+	        <span class="c2">Attractive Reseller Programs for 1Tbps+Asia-Optimized IP Transit, Leased Line, SD-WAN, and Data Center Resources</span>
+        </div>
+      </li>
+      <li>
+      	<div class="bg1">
+	        <img src="__STATIC__/images/about(3).png" alt="">
+	        <p>Around The Clock Support</p>
+	        <span class="c2">24x7 Support, 13 Years + Experience</span>
+        </div>
+      </li>
+      <li>
+      	<div class="bg1">
+	        <img src="__STATIC__/images/about(4).png" alt="">
+	        <p>Customized Solutions</p>
+	        <span class="c2">Tailored Made Solutions Based on Leading Hardware Platforms, Hosted in Tier 3 Data Centers in Global Internet Hubs</span>
+        </div>
+      </li>
+      <li>
+      	<div class="bg1">
+	        <img src="__STATIC__/images/about(5).png" alt="">
+	        <p>Secure</p>
+	        <span class="c2">Fast, Secure Connectivity Between Any Public, Private, Bare-Metal Clouds Anywhere</span>
+        </div>
+      </li>
+      <li>
+      	<div class="bg1">
+	        <img src="__STATIC__/images/about(6).png" alt="">
+	        <p>DDoS Mitigation</p>
+	        <span class="c2">1Tbps+ DDoS Mitigation Service</span>
+        </div>
+      </li>
+    </ul>
+	</div>
+	<div id="about2">
+		<h2>Our Focus</h2>
+		<ul class="clear container">
+			<li><img src="__STATIC__/images/about(7).png"><p>The Best Global Connectivity Platform For Our Customers</p></li>
+			<li><img src="__STATIC__/images/about(8).png" alt=""><p>The Best Experience For Our Customers, Eco-system Partners and Employees</p></li>
+			<li><img src="__STATIC__/images/about(9).png" alt=""><p>The Best Value Through Relentless Improvement and Cost Management</p></li>
+		</ul>
+	</div>
+	<div class="topimg" id="about3">
+		<img class="pc" src="__STATIC__/images/about-t2.png" alt="">
+		<img class="phone" src="__STATIC__/images/about-t3.png" alt="">
+		<div class="slide-txt c1">
+			<h1>Are You Ready?</h1>
+			<p>Act Now, Connect Your Services with Your Customers Anytime, Anywhere!</p>
+			{if condition="$value neq ''"}
+			<a class="c1 btb" target="_blank" role="button" href="https://billing.raksmart.com/whmcs/cart.php">Order</a>
+			{/if}
+
+		</div>
+	</div>
+</div>
+{include file="public/footer" }
+<script type="text/javascript">
+	$('#menu').on('click',function(){$(this).toggleClass('show');$('body').toggleClass('fix');})
+	$('#navl li').on('click',function(){if($('#menu').is(":visible")){$(this).toggleClass('show').siblings().removeClass('show');}return})
+	
+</script>

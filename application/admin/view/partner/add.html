@@ -1,0 +1,99 @@
+<style>
+
+.layui-table img{
+	max-width:50px;
+	max-height:50px;
+}
+#selected_group_goods .label-title{width:auto;padding-left:0px;}
+#demo1{
+    max-width: 150px;
+    max-height: 150px;
+}
+</style>  
+  <div class="layui-fluid" >
+        <form class="layui-form websearch" action="" id="myForm" >
+			<div class="layui-form" lay-filter="">
+		
+				
+				
+			  <div class="layui-form-item">
+                <label class="layui-form-label">名称</label>
+                <div class="layui-input-inline" style="width: 250px;">
+                  <input type="text" name="title" lay-verify='required' value="" class="layui-input" lay-verify="required" placeholder="请输入">
+                </div>
+                <div class="layui-form-mid layui-word-aux">&nbsp;</div>
+              </div>
+			   <div class="layui-form-item">
+                <label class="layui-form-label">排序</label>
+                <div class="layui-input-inline" style="width: 250px;">
+                 <input type="text" name="listorder" value="" class="layui-input">
+                </div>
+                <div class="layui-form-mid layui-word-aux">&nbsp;</div>
+              </div>
+			  <div class="layui-form-item">
+                <label class="layui-form-label">链接地址</label>
+                <div class="layui-input-inline" style="width: 250px;">
+                 <!--<textarea placeholder="请输入" name="description" class="layui-textarea"></textarea>-->
+                    <input type="text" name="description" value="" class="layui-input">
+                </div>
+                <div class="layui-form-mid layui-word-aux">http://</div>
+              </div>
+			
+			<div class="layui-form-item">
+				<label class="layui-form-label">公司logo</label>
+				<div class="layui-input-inline" style="width:300px;">
+					<div class="layui-upload">
+						<button type="button" class="layui-btn" id="testList">选择图片</button>
+						<div class="layui-upload-list">
+							<input type="hidden" name="thumb" id="img_url">
+							<img class="layui-upload-img" id="demo1">
+							<p id="demoText"></p>
+						</div>
+					</div>
+				</div>
+				<div class="layui-form-mid red-star"></div>
+			 </div>	
+			
+			
+              <div class="layui-form-item">
+                <div class="layui-input-block">
+                   <button style="margin-left:15%;" class="layui-btn" type="button" lay-filter="formDemo" lay-submit>保存数据</button>
+                </div>
+              </div>
+            </div>
+			</form>
+  </div>
+    <script src="/static/js/img.js?v={:config('web_version')}"></script>
+  <script>
+  layui.use(['form'], function(){
+	 var $ = layui.jquery;
+	 var form = layui.form;
+		//提交
+		form.on('submit(formDemo)', function(data){
+            var obj = $(this);
+			var formData = $("#myForm").serialize();
+            obj.attr('disabled',true);
+            $.ajax({
+                type:"POST",
+                url:'__URL__/submitdata',
+                data:formData,
+                dataType:"JSON",
+                success:function(data){
+                    if(data.code == 0)
+                    {
+                        layer.msg('保存成功！',{icon:1,time: 2000},function(){
+                            window.parent.location.reload();//刷新父页面
+                            parent.layer.closeAll();
+                        });
+                    }
+                    else{
+                        obj.attr('disabled',false);
+                        layer.msg(data.msg,{icon:2}, function(){ });
+                    }
+                }
+            });
+        });
+  
+  });
+    uploads.oneimg();
+  </script>

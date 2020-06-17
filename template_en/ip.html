@@ -1,0 +1,127 @@
+{include file="public/header" }
+{include file="public/nav" }
+{include file="public/banner_b" }
+<div class="content">
+	<div id="ip1" class="bg2">
+		<h2>IP Transit Service</h2>
+		<div class="container">
+			<p>AquaNX Provides IP Transit Services Via The Best-In-Class Fiber Optic Infrastructure, Across Globe. Available In Strategic Internet Hubs Like San Jose, LA, Portland, Tokyo, Hong Kong, Singapore, Frankfurt, From 100M To 100G, AquaNX IP Transit Services Will Extend Your Reach Wherever Your Customers Are. We Offer Month To Month Term (Yes, NO Contract), Flexible Billing Options, Industry Leading SLAs Etc. To Earn The Trust From Our Rapidly Expanding Customer Base</p>
+			<table class="bg1">
+	      <tr><th>BANDWIDTH</th><th>BGP</th><th>IPV4 / IPV6 Dual STACK</th></tr>
+	      <tr>
+	        <td>1-10 Gbps</td>
+	        <td><i></i></td>
+	        <td><i></i></td>
+	        <td><a class="btb c1" href="javascript:;">contact us</a></td>
+	      </tr>
+	      <tr>
+	        <td>40 Gbps</td>
+	        <td><i></i></td>
+	        <td><i></i></td>
+	        <td><a class="btb c1" href="javascript:;">contact us</a></td>
+	      </tr>
+	      <tr>
+	        <td>100 Gbps</td>
+	        <td><i></i></td>
+	        <td><i></i></td>
+	        <td><a class="btb c1" href="javascript:;">contact us</a></td>
+	      </tr>
+	      <tr>
+	        <td>100 Gbps+</td>
+	        <td><i></i></td>
+	        <td><i></i></td>
+	        <td><a class="btb c1" href="javascript:;">contact us</a></td>
+	      </tr>
+	      <tr>
+	      	<td colspan="3"><a class="btb c1" href="javascript:;">contact us</a></td>
+	      </tr>
+	    </table>
+		</div>			
+	</div>
+	<div id="home3" class="ip2">
+		<h2>Our Global Footprint</h2>
+		<ul id="map">
+			<img src="__STATIC__/images/map.png" style="display:block;">
+			<li id="btl"><i></i><p>portland</p></li>
+			<li id="shs"><i></i><p>San Jose</p></li>
+			<li id="lsj"><i></i><p>Los Angeles</p></li>
+			<li id="hg"><i></i><p>Korea</p></li>
+			<li id="rb"><i></i><p>Japan</p></li>
+			<li id="tw"><i></i><p>Taiwan</p></li>
+			<li id="yd"><i></i><p>India</p></li>
+			<li id="tg"><i></i><p>Thailand</p></li>
+			<li id="yn"><i></i><p>Vietnam</p></li>
+			<li id="jpz"><i></i><p>Cambodia</p></li>
+			<li id="flb"><i></i><p>the Philippines</p></li>
+			<li id="xjp"><i></i><p>Singapore</p></li>
+			<li id="ld" class="bg7"><i class="bg7"></i><p>London</p></li>
+			<li id="flkf" class="bg7"><i class="bg7"></i><p>Frankfurt</p></li>
+			<li id="amstd" class="bg7"><i class="bg7"></i><p>Amsterdam</p></li>
+		</ul>
+	</div>
+	<div id="ip3" class="bg2">
+		<h2>IP Transit Service Locations</h2>
+		<ul class="container clear">
+			<li>
+				<div class="bg1">624 South Grand Avenue Los Angeles,CA 90017<br>624 South Grand Avenue Los Angeles,CA 90017</div>
+			</li>
+			<li>
+				<div class="bg1">624 South Grand Avenue Los Angeles,CA 90017</div>
+			</li>
+			<li>
+				<div class="bg1">624 South Grand Avenue Los Angeles,CA 90017</div>
+			</li>
+			<li>
+				<div class="bg1">624 South Grand Avenue Los Angeles,CA 90017</div>
+			</li>
+			<li>
+				<div class="bg1">624 South Grand Avenue Los Angeles,CA 90017</div>
+			</li>
+			<li>
+				<div class="bg1">624 South Grand Avenue Los Angeles,CA 90017</div>
+			</li>
+			<li>
+				<div class="bg1">624 South Grand Avenue Los Angeles,CA 90017</div>
+			</li>
+			<li>
+				<div class="bg1">624 South Grand Avenue Los Angeles,CA 90017</div>
+			</li>
+			<li>
+				<div class="bg1">624 South Grand Avenue Los Angeles,CA 90017</div>
+			</li>
+			<li>
+				<div class="bg1">624 South Grand Avenue Los Angeles,CA 90017<br>624 South Grand Avenue Los Angeles,CA 90017</div>
+			</li>
+			<li>
+				<div class="bg1">624 South Grand Avenue Los Angeles,CA 90017</div>
+			</li>
+			<li>
+				<div class="bg1">624 South Grand Avenue Los Angeles,CA 90017</div>
+			</li>
+			<li>
+				<div class="bg1">624 South Grand Avenue Los Angeles,CA 90017</div>
+			</li>
+			<li>
+				<div class="bg1">624 South Grand Avenue Los Angeles,CA 90017</div>
+			</li>
+			<li>
+				<div class="bg1">624 South Grand Avenue Los Angeles,CA 90017</div>
+			</li>
+		</ul>
+	</div>
+	{include file="public/message" }
+</div>
+{include file="public/footer" }
+<script type="text/javascript">
+	$('#menu').on('click',function(){$(this).toggleClass('show');$('body').toggleClass('fix');})
+	$('#navl li').on('click',function(){if($('#menu').is(":visible")){$(this).toggleClass('show').siblings().removeClass('show');}return})
+	$('#budget').click(function(){
+    $(this).find('ol').show();
+  });
+  $('#budget li').click(function(e){
+    var val = $(this).text();
+    $(this).parents('ol').siblings('input').val(val);
+    $('#budget ol').hide();
+    e.stopPropagation();
+  });
+</script>

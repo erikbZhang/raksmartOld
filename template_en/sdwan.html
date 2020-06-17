@@ -1,0 +1,83 @@
+{include file="public/header" }
+{include file="public/nav" }
+{include file="public/banner_b" }
+<div class="content">
+	<div id="sd1" class="container bg1">
+		<h2>Your Networking Challenges Resolved</h2>
+		<p>RAKsmart Provides Powerful Cloud And Network Connectivity, Such As Hybrid Cloud Connectivity, Edge Connectivity, Internet And Cloud Exchange, Intelligent Network Monitoring And Operation Support, Etc. To Future Proof Our Customer's Business</p>
+		<ul class="clear">
+      <li>
+        <img src="__STATIC__/images/sd(1).png" alt="">
+        <p>Cloud Connectivity</p>
+        <span class="c2">Rapid Connectivity to All Public Clouds, Anytime Anywhere</span>
+      </li>
+      <li>
+        <img src="__STATIC__/images/sd(2).png" alt="">
+        <p>Application Spikes</p>
+        <span class="c2">Adapt Real-time to Network Bandwidth Spikes Due to Customer Visits</span>
+      </li>
+      <li>
+        <img src="__STATIC__/images/sd(3).png" alt="">
+        <p>Packet Loss</p>
+        <span class="c2">Offset Peak-time Packet Loss</span>
+      </li>
+      <li>
+        <img src="__STATIC__/images/sd(4).png" alt="">
+        <p>High Latency</p>
+        <span class="c2">Offset Peak-time High Latency</span>
+      </li>
+      <li>
+        <img src="__STATIC__/images/sd(5).png" alt="">
+        <p>Data Synchronization</p>
+        <span class="c2">Orchestrate Data Synchronization Across Multiple Clouds or Data Centers</span>
+      </li>
+      <li>
+        <img src="__STATIC__/images/sd(6).png" alt="">
+        <p>Management Across Diverse Networks</p>
+        <span class="c2">Ease The Challenge to Deploy and Manage Your Solutions Across Diverse Networks</span>
+      </li>
+    </ul>
+	</div>
+	<div id="home3" class="sd2 bg1">
+		<h2>D-WAN Enables Your Network Deployment Anytime, Anywhere</h2>
+		<p>RAKsmart Offers SD-WAN Solutions Across 200+ PoPs Globally, Through An Easy-To-Use Platform. Connect Your Cloud Or Data Centers Through AquaNX SD-WAN Has Never Been Easier</p>
+		<ul id="map">
+			<img src="__STATIC__/images/map.png" style="display:block;">
+			<li id="btl"><i></i><p>portland</p></li>
+      <li id="shs"><i></i><p>San Jose</p></li>
+      <li id="lsj"><i></i><p>Los Angeles</p></li>
+      <li id="hg"><i></i><p>Korea</p></li>
+      <li id="rb"><i></i><p>Japan</p></li>
+      <li id="tw"><i></i><p>Taiwan</p></li>
+      <li id="yd"><i></i><p>India</p></li>
+      <li id="tg"><i></i><p>Thailand</p></li>
+      <li id="yn"><i></i><p>Vietnam</p></li>
+      <li id="jpz"><i></i><p>Cambodia</p></li>
+      <li id="flb"><i></i><p>the Philippines</p></li>
+      <li id="xjp"><i></i><p>Singapore</p></li>
+      <li id="ld" class="bg7"><i class="bg7"></i><p>London</p></li>
+      <li id="flkf" class="bg7"><i class="bg7"></i><p>Frankfurt</p></li>
+      <li id="amstd" class="bg7"><i class="bg7"></i><p>Amsterdam</p></li>
+		</ul>
+	</div>
+	<div id="sd3" class="bg2">
+		<h2>Intelligent Network Service Provider</h2>	
+		<p class="container">Inter-Connect Your Customers To Diverse Service Providers (e.g. Public Cloud, ISP, IDC) Environments Through Dynamic SD WAN Solutions. Meet Your Customers Wherever They Are, With Ease!</p>
+		<img src="__STATIC__/images-en/sd(7)-en.png">
+	</div>
+	{include file="public/message" }
+</div>
+{include file="public/footer" }
+<script type="text/javascript">
+	$('#menu').on('click',function(){$(this).toggleClass('show');$('body').toggleClass('fix');})
+	$('#navl li').on('click',function(){if($('#menu').is(":visible")){$(this).toggleClass('show').siblings().removeClass('show');}return})
+	$('#budget').click(function(){
+    $(this).find('ol').show();
+  });
+  $('#budget li').click(function(e){
+    var val = $(this).text();
+    $(this).parents('ol').siblings('input').val(val);
+    $('#budget ol').hide();
+    e.stopPropagation();
+  });
+</script>

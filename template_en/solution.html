@@ -1,0 +1,56 @@
+{include file="public/header" }
+{include file="public/nav" }
+{include file="public/banner_b" }
+<div class="content">
+	<div id="tg1" class="container">
+		<h2>Why One-Stop Service From RAKSMART</h2>
+		<ul class="clear">
+			<li><div><img src="__STATIC__/images/solution(1).png"><p>VIP Service</p><span class='c2'>Free 1-1 Consultation For Your Customized Solution</span></div></li>
+			<li><div><img src="__STATIC__/images/solution(2).png"><p>Customization</p><span class='c2'>Customized Hardware, Port, IP and Network Configuration</span></div></li>
+			<li><div><img src="__STATIC__/images/solution(3).png"><p>Global Deployment</p><span class='c2'>World-Class Agile and Intelligent Network And Clout Connectivity</span></div></li>
+			<li><div><img src="__STATIC__/images/solution(4).png"><p>Global Managed Colo Service</p><span class='c2'>Managed Colocation, Managed Cloud Solutions Across The Globe</span></div></li>
+			<li><div><img src="__STATIC__/images/solution(5).png"><p>24x7 Support</p><span class='c2'>24x7 Support, 13 Years+ Experience</span></div></li>
+			<li><div><img src="__STATIC__/images/solution(6).png"><p>DDoS Mitigation Service</p><span class='c2'>24x7 SOC Support From Experienced Security Team</span></div></li>
+		</ul>
+	</div>
+	<div id="solution2">
+		<h2 class="c1">Work Flow</h2>
+		<img class="pc container" src="__STATIC__/images-en/solution(7)-en.png">
+		<img class="phone container" src="__STATIC__/images-en/solution(7)-1-en.png">
+	</div>
+	<div id="solution3" class="bg2">
+		<h2>RAKSMART</h2>
+		<ul class="container clear">
+			<li><img src="__STATIC__/images/solution(8).png"><p>Saving</p><span class="c2">Volume Discount<br>Across Aggregated Services</span>
+			<li><img src="__STATIC__/images/solution(9).png"><p>Peace Of Mind</p><span class="c2">VIP<br>Customization Plan</span>
+			<li><img src="__STATIC__/images/solution(10).png"><p>Save Time</p><span class="c2">Turn-key<br>Service Deployment</span>
+			<li><img src="__STATIC__/images/solution(11).png"><p>Save Effort</p><span class="c2">One-Stop<br>Service</span>
+			<li><img src="__STATIC__/images/solution(12).png"><p>End To End</p><span class="c2">Full Life<br>Cycle Support</span></li>
+		</ul>
+	</div>
+	{include file="public/message" }
+</div>
+{include file="public/footer" }
+<script type="text/javascript">
+
+	$('#menu').on('click',function(){
+		$(this).toggleClass('show');
+		$('body').toggleClass('fix');
+	})
+	$('#navl li').on('click',function(){
+		if($('#menu').is(":visible")){
+			$(this).toggleClass('show').siblings().removeClass('show');
+		}
+		return
+	})
+
+	$('#budget').click(function(){
+    $(this).find('ol').show();
+  });
+  $('#budget li').click(function(e){
+    var val = $(this).text();
+    $(this).parents('ol').siblings('input').val(val);
+    $('#budget ol').hide();
+    e.stopPropagation();
+  });
+</script>

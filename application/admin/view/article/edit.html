@@ -1,0 +1,151 @@
+<style>
+.layui-table img{
+	max-width:50px;
+	max-height:50px;
+}
+#selected_group_goods .label-title{width:auto;padding-left:0px;}
+#demo1{
+    max-width: 350px;
+    max-height: 200px;
+}
+</style>  
+  <div class="layui-fluid" >
+        <form class="layui-form websearch" action="" id="myForm" >
+			<div class="layui-form" lay-filter="">
+				<input  type="hidden" name="a_id" value="{$info.a_id}">
+				<div class="layui-form-item">
+                <label class="layui-form-label">分类</label>
+                <div class="layui-input-inline" style="width: 250px;">
+					<select name="c_id">
+						<option value=""></option>
+						{volist name="cat_list" id="vo"}
+						<option value="{$vo.c_id}" {if $vo['c_id'] == $info['c_id']}selected{/if}>{$vo.c_name}</option>
+						{/volist}
+				  </select>	
+                </div>
+                <!--<div class="layui-form-mid layui-word-aux">&nbsp;</div>
+                    <div class="layui-input-inline" style="width: 250px;">
+                        <input type="radio" name="a_type" value="1" title="官方公告" {if condition="$info['a_type'] eq '1'"} checked {/if} >
+                        <input type="radio" name="a_type" value="2" title="行业新闻" {if condition="$info['a_type'] eq '2'"} checked {/if} >
+                    </div>-->
+              </div>
+			  <div class="layui-form-item">
+                <label class="layui-form-label">文章标题</label>
+                <div class="layui-input-inline" style="width: 250px;">
+                  <input type="text" name="title" lay-verify='required' value="{$info['a_title']}" class="layui-input" >
+                </div>
+                <div class="layui-form-mid layui-word-aux">&nbsp;</div>
+              </div>
+			  <div class="layui-form-item">
+                <label class="layui-form-label">标签</label>
+                <div class="layui-input-inline" style="width: 250px;">
+                  <input type="text" name="con"  value="{$info['a_con']}" class="layui-input" >
+                </div>
+                <div class="layui-form-mid layui-word-aux">&nbsp;</div>
+              </div>
+			  <div class="layui-form-item">
+                <label class="layui-form-label">文章简介</label>
+                <div class="layui-input-inline" style="width: 250px;">
+                 <textarea placeholder="请输入" name="description" class="layui-textarea">{$info['a_introduction']}</textarea>
+                </div>
+                <div class="layui-form-mid layui-word-aux">&nbsp;</div>
+              </div>
+			
+			<div class="layui-form-item">
+				<label class="layui-form-label">缩略图</label>
+				<div class="layui-input-inline" style="width:300px;">
+					<div class="layui-upload">
+						<button type="button" class="layui-btn" id="testList">选择图片</button>
+						<div class="layui-upload-list">
+							<input type="hidden" name="img_url" value="{$info['a_img']}" id="img_url" >
+							<img class="layui-upload-img" id="demo1" src="/uploads/{$info['a_img']}">
+							<p id="demoText"></p>
+						</div>
+					</div>
+				</div>
+				<div class="layui-form-mid red-star"></div>
+			 </div>	
+			<div class="layui-form-item">
+              <label class="layui-form-label">相册</label>
+              <div class="layui-input-block">
+               <div class="layui-upload">
+                <button type="button" class="layui-btn layui-btn-normal" id="showList">选择多文件</button><input class="layui-upload-file" type="file" name="file" multiple=""> 
+                  <div class="layui-upload-list" style="width: 700px; line-height: 200px;text-align: center;">
+                    <table class="layui-table">                   
+                      <tbody id="imgList">
+						<?php $photo = json_decode($info['a_imgs'],true);?>
+						{volist name="photo" id="vo"}				
+					  <tr id="upload-{$key}">
+						<td><input type="hidden" name="photo[{$key}][file]" value="{$vo.file}"><img width="75" height="75" src="/uploads/{$vo.file}" alt="图片"></td>
+						<td class="td-listorder"><input type="text" name="photo[{$key}][listorder]" value="{$vo.listorder}" style="width:55px;" class="layui-input"></td>
+						<td></td>
+						<td><button type="button" class="layui-btn layui-btn-mini layui-btn-danger demo-delete">删除</button></td>
+					  </tr>
+					  {/volist}
+					  </tbody>
+                    </table>
+                  </div>
+                  <button type="button" class="layui-btn layui-btn-danger" id="imgListAction">开始上传</button>
+                </div> 
+              </div>
+			</div>		
+			<div class="layui-form-item">
+                <label class="layui-form-label">文章详情</label>
+                <div class="layui-input-inline" style="width:auto;">
+                 <textarea placeholder="请输入" id="editor-content" name="content" class="layui-textarea">{$info['a_content']}</textarea>
+                </div>
+                <div class="layui-form-mid layui-word-aux">&nbsp;</div>
+              </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">文章来源</label>
+                    <div class="layui-input-inline" style="width: 250px;">
+                        <input type="text" name="a_url"  value="{$info['a_url']|default=''}" class="layui-input" >
+                    </div>
+                    <div class="layui-form-mid layui-word-aux">http://开头</div>
+                </div>
+              <div class="layui-form-item">
+                <div class="layui-input-block">
+                   <button style="margin-left:15%;" class="layui-btn" type="button" lay-filter="formDemo" lay-submit>保存数据</button>
+                </div>
+              </div>
+            </div>
+			</form>
+  </div>
+    <script src="/static/js/img.js?v={:config('web_version')}"></script>
+	<script src="/static/js/editor/ueditor/ueditor.config.js"></script>
+	<script src="/static/js/editor/ueditor/ueditor.all.min.js"></script>
+	<script>var ue0 = UE.ui.Editor({initialFrameHeight:300,initialFrameWidth:650,autoHeightEnabled:false});ue0.render("editor-content");</script>
+  <script>
+  layui.use(['form'], function(){
+	 var $ = layui.jquery;
+	 var form = layui.form;
+		//提交
+		form.on('submit(formDemo)', function(data){
+            var obj = $(this);
+			var formData = $("#myForm").serialize();
+            obj.attr('disabled',true);
+            $.ajax({
+                type:"POST",
+                url:'__URL__/submitedit',
+                data:formData,
+                dataType:"JSON",
+                success:function(data){
+                    if(data.code == 0)
+                    {
+                        layer.msg('保存成功！',{icon:1,time: 2000},function(){
+                            window.parent.location.reload();//刷新父页面
+                            parent.layer.closeAll();
+                        });
+                    }
+                    else{
+                        obj.attr('disabled',false);
+                        layer.msg(data.msg,{icon:2}, function(){ });
+                    }
+                }
+            });
+        });
+  
+  });
+    uploads.oneimg();
+	uploads.uploadimgs({up_type:'photo',eme:'#showList',showobj:'#imgList',bindObj:'#imgListAction',name:'photo'});
+  </script>

@@ -1,0 +1,64 @@
+{include file="public/header" }
+{include file="public/nav" }
+{include file="public/banner_b" }
+<div class="content">
+	<div id="join1" class="bg2">
+		<img src="__STATIC__/images/join(1).png" alt="">
+		<h2>Our Culture</h2>
+		<p class="container">People Are Essential To Our Success: We Build A Winning & Collaborating Work Environment Through Caring, Trusting, Empowering Our Employees; We Ignite Passions So That Our Employees Reach Their Maximal Potential; We Drive Relentless Innovations Through Agile Methodology; We Strive To Maximize The Wins For Our Customers, Eco-system Partners Through Our Thriving Employees</p>
+	</div>
+	<div id="join2" class="bg2">
+		<h2>Benefits</h2>
+		<ul class="clear container">
+			<li><img src="__STATIC__/images/join(2).png"><h3>Health Benefits</h3><p>Health Insurance and Checkup, Annual Gym Membership</p></li>
+			<li><img src="__STATIC__/images/join(3).png" alt=""><h3>Career Development</h3><p>Thoughtful Employee Mentoring</p></li>
+			<li><img src="__STATIC__/images/join(4).png" alt=""><h3>Self Realization</h3><p>Tap Into Your Full Potential</p></li>
+		</ul>
+	</div>
+	<div class="container">
+		<div id="re2" class="bg1">
+			{if condition="$join['a_img']"}
+			<img src="/uploads/{$join['a_img']|default=''}" alt="{$join['a_title']|default=''}">
+			{else/}
+			<img src="__STATIC__/images/join(5).png" alt="">{/if}
+	  	<div class="re2-r">
+	  		<h2>{$join['a_title']|default=''}</h2>
+	  		<p>{$join['a_content']|default=''}</p>
+	  		<a class="btb c1" target="_blank" href="{:url('home_en/all/contact')}">contact us</a>
+	  	</div>
+	  </div>
+	</div>
+<div id="join3" class="container">
+  	<h2>Job Openings</h2>
+  	<div class="container bg1">
+  		<ul>
+		{if condition="$info"}
+		{volist name="info" id="vo"}
+		<li><h3 class="c4">{$vo.a_title|default=''}<a class="btb c1" {if condition="$vo['a_url'] neq ''"} target="_blank" href="{$vo['a_url']|default=''}" {else/} href="javascript:;" {/if} >apply</a></h3>
+        <span class="c3">{$vo.a_con|default=''}</span>
+        <p>{$vo.a_content|default=''}</p></li>
+		{/volist}
+		{/if}
+  		</ul>
+  	</div>
+  </div>
+  <!-- <div id="join3" class="container">
+  	<h2>空缺职位</h2>
+	
+	{if condition="$info"}
+	{volist name="info" id="vo"}
+	<div class="container bg1">
+  		<h3 class="c4">{$vo.a_title|default=''}<a class="btb c1" {if condition="$vo['a_url'] neq ''"} target="_blank" href="{$vo['a_url']|default=''}" {else/} href="javascript:;" {/if}>申请</a></h3>
+      <span class="c3">{$vo.a_con|default=''}</span>
+      {$vo.a_content|default=''}
+  	</div>
+	{/volist}
+	{/if}
+  </div> -->
+</div>
+{include file="public/footer" }
+<script type="text/javascript">
+	$('#menu').on('click',function(){$(this).toggleClass('show');$('body').toggleClass('fix');})
+	$('#navl li').on('click',function(){if($('#menu').is(":visible")){$(this).toggleClass('show').siblings().removeClass('show');}return})
+	
+</script>

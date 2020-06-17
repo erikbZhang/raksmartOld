@@ -1,0 +1,98 @@
+{include file="public/header" }
+{include file="public/nav" }
+{include file="public/banner_b" }
+<div class="content bg2">
+	<div id="net1" class="container">
+		<h2>PEG TECH Network Interconnection</h2>
+		<h3 class="c4">Policy and Requirements</h3>
+		<p>Peering Operations Contact: noc@raksmart.com <br/>Peering Policy Contact: peering@raksmart.com<br/> PEG Tech is a global Internet Service Provider (ISP) with POP (point of presence) location in Equinix San Jose / Bay Area Exchange and Any2 Exchange Northern California . PEG peers with other Internet Service Providers (ISPs) and Content Networks with IPv4 connectivity on Autonomous System (AS) 54600 for the purpose of exchanging traffic between these networks.</p>
+		<h3 class="c4">Selective Peering Policy</h3>
+		<p>PEG Tech has a selective but generally open peering policy - peers are selected based upon performance, capability, and where traffic needs to be delivered. Peers are subject to certain operational, technical, and legal requirements.</p>
+		<h3 class="c4">Operational Requirements</h3>
+		<div>
+			<strong>To maintain optimum service levels for our customers and their clientele, peers shall meet the following set of requirements:</strong>
+			<ul>
+				<li>Exchange traffic with PEG at all available IXPs that are shared in common for optimal traffic distribution and redundancy.</li>
+				<li>Maintain congestion free interconnection with PEG Tech. PEG and peers must work quickly and diligently to augment capacity between networks or to the relevant IXP, as needed.</li>
+				<li>Must maintain a Network Operations Center capable of responding operational problems and security incidents 24 hours per day, 7 days per week.</li>
+				<li>Be responsive to activities considered malicious and/or detrimental to the Internet as a whole, its own network, and to its customers, including but not limited to, sending unsolicited bulk email, hacking, and denial of service. PEG expects peers to provide a qualified engineer to help trace and mitigate attacks in a reasonable amount of time.</li>
+				<li> Provide an escalation path for resolving operational problems and/or security incidents in a timely fashion. Meet all requirements at the time the peering request is made, and must continue to be met for the duration of the peering session</li>
+			</ul>
+		</div>
+		<h3 class="c4">Technical Requirements</h3>
+		<strong>The following technical requirements also apply to peering with PEG Tech. Peers must:</strong>
+		<ul>
+			<li>Have a publicly routed ASN.</li>
+			<li>Not advertise prefixes with a mask longer than /24 for IPv4.</li>
+			<li>Demonstrate that announced publicly routable prefixes and/or aggregates are currently visible in the DFZ.</li>
+			<li>Announce a consistent set of prefixes to PEG Tech at all points of interconnection, unless otherwise agreed upon.</li>
+			<li>Only send traffic destined for prefixes announced by PEG Tech.</li>
+			<li>Not point a default route at PEG or use static routes to send traffic to our AS.</li>
+			<li>Set default maximum prefixes per session to 250 prefixes.</li>
+			<li>Register their prefixes with appropriate route/route6 objects at an appropriate IRRDB, and maintain a full and accurate PeeringDB listing. PEG will use this data to build BGP prefix lists.</li>
+		</ul>
+		<h3 class="c4">Important Notices</h3>
+			<strong>To ensure quality of operations, PEG Tech reserves the following rights under its Peering Policy and Requirements:</strong>
+			<ul>
+				<li>To alter our peering policy and peering requirements at any time.</li>
+				<li>To accept or decline a peering request at any time for any reason.</li>
+				<li>To suspend, without notice, peering connectivity in the event of a severe quality of service issue such as high latency, packet loss, or jitter pattern is detected and to take appropriate traffic engineering steps to maintain service quality.</li>
+				<li>To selectively withdraw prefixes from public IXP fabrics as needed to protect service quality.</li>
+				<li>To terminate any peering connection at any time without notice.</li>
+			</ul>
+			<strong>Additionally:</strong>
+			<ul>
+				<li>By advertising prefixes to PEG Tech, a peer will expressly waive any right to compensation for accepting / delivering traffic originated from PEG Tech’s ASN.</li>
+				<li>Peers with significant traffic with the PEG Tech will be considered for bilateral sessions via IXPs or private (cross-connect) peering.</li>
+				<li> PEG Tech customers interested in a peering connection for origin transit offload should send an email to sales@raksmart.com for more information.</li>
+			</ul>
+		<h3 class="c4">General Peering Information</h3>
+		<div style="overflow-x:auto;">
+			<table class="bg1">
+			<tr>
+				<td>ASN</td>
+				<td>AS54600</td>
+			</tr>
+			<tr>
+				<td>AS-Macro</td>
+				<td>AS-PEG</td>
+			</tr>
+			<tr>
+				<td>Peening Information</td>
+				<td>http://www.peeningdb.com/net/14787</td>
+			</tr>
+			<tr>
+				<td>Peening Policy</td>
+				<td>Selective</td>
+			</tr>
+		</table>
+		</div>
+		<h3 class="c4">General Peering Information</h3>
+		<div style="overflow-x:auto;">
+			<table class="bg1">
+				<tr>
+					<td>Peening Policy Contact</td>
+					<td class="c4">Peering@raksmart.com</td>
+				</tr>
+				<tr>
+					<td>Peening Operations Contact</td>
+					<td class="c4">noc@raksmart.com</td>
+				</tr>
+				<tr>
+					<td>Peening DB</td>
+					<td>http://www.peeningdb.com/net/14787</td>
+				</tr>
+				<tr>
+					<td>Postal Address</td>
+					<td>PEG Tech<br/>55 South Market Street,Suite 320<br/>San Jose,CA 95113<br/>USA</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+</div>
+{include file="public/footer" }
+<script type="text/javascript">
+	$('#menu').on('click',function(){$(this).toggleClass('show');$('body').toggleClass('fix');})
+	$('#navl li').on('click',function(){if($('#menu').is(":visible")){$(this).toggleClass('show').siblings().removeClass('show');}return})
+	
+</script>

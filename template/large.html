@@ -1,0 +1,144 @@
+{include file="public/header" }
+{include file="public/nav" }
+{include file="public/banner_b" }
+<div class="content">
+	<div id="bare1">
+		<h2>大宽带服务器配置产品</h2>
+		<div class="container pc" style="position:relative;">
+			<div class="tab">
+				<ul>
+					{if condition="$area_info"}
+					{volist name="area_info" id="vo"}
+					<li {if condition="$key eq 0"}class="light" {/if} >{$vo.area_name|default=""}</li>
+					{/volist}
+					{/if}
+				</ul>
+			</div>
+		</div>
+		<ul class="card bg2 pc">
+			{if condition="$area_info"}
+			{volist name="area_info" id="vo"}
+			<li class="container" {if condition="$key eq 0"} style="display: list-item;" {/if} >
+			<table class="bg1">
+				<tr>
+					<th>产品名</th>
+					<th>内存</th>
+					<th>硬盘</th>
+					<th>宽带</th>
+					<th>流量</th>
+					<th>IP</th>
+					<th>DDOS防御</th>
+					<th>金额</th>
+				</tr>
+				{if condition="$vo['product'] neq ''"}
+				{volist name="vo['product']" id="voo"}
+				<tr>
+					<td>{$voo.p_name|default=''}</td>
+					<td>{$voo.p_nc|default=''}</td>
+					<td>{$voo.p_yp|default=''}</td>
+					<td>{$voo.p_kd|default=''}</td>
+					<td>{$voo.p_ll|default=''}</td>
+					<td>{$voo.p_ip|default=''}</td>
+					<td>{$voo.ddos|default=''}</td>
+					<td>${$voo.p_money|default=''}</td>
+					<td><a class="btb c1" target="__blank" {if condition="$voo['p_url']"} href="{$voo['p_url']|default=''}" {else/} href="javascript:;" {/if}>现在订购</a></td>
+				</tr>
+				{/volist}
+				{/if}
+			</table>
+			</li>
+			{/volist}
+			{/if}
+		</ul>
+		<div class="container phone" style="position:relative;">
+			<div class="swiper-container tab1">
+				<ul class="swiper-wrapper">
+					{if condition="$area_info"}
+					{volist name="area_info" id="vo"}
+					<li class="{if condition="$key eq 0"} light {/if} swiper-slide">{$vo.area_name|default=""}</li>
+					{/volist}
+					{/if}
+				</ul>
+			</div>
+		</div>
+		<ul class="bg2 phone card2">
+			{if condition="$area_info"}
+			{volist name="area_info" id="vo"}
+			{if condition="$key eq 0"}
+			<li class="container swiper-container swiper2" style="display: list-item;">
+				{else/}
+			<li class="container swiper-container swiper2">
+				{/if}
+				<ul class="clear swiper-wrapper">
+					{if condition="$vo['product'] neq ''"}
+					{volist name="vo['product']" id="voo"}
+					<li class="swiper-slide">
+						<div class="bg1">
+							<p>产品名 <span>{$voo.p_name|default=''}</span></p>
+							<p>内存 <span>{$voo.p_nc|default=''}</span></p>
+							<p>硬盘 <span>{$voo.p_yp|default=''}</span></p>
+							<p>宽带 <span>{$voo.p_kd|default=''}</span></p>
+							<p>流量 <span>{$voo.p_ll|default=''}</span></p>
+							<p>IP <span>{$voo.p_ip|default=''}</span></p>
+							<p>DDOS防御<span>{$voo.ddos|default=''}</span></p>
+							<p>金额 <span class='c4'>${$voo.p_money|default=''}</span></p>
+							<a class="btb c1" target="__blank" {if condition="$voo['p_url']"}  href="{$voo['p_url']|default=''}" {else/} href="javascript:;" {/if}>现在订购</a>
+						</div>
+					</li>
+					{/volist}
+					{/if}
+				</ul>
+				<div class="swiper-pagination"></div>
+			</li>
+			{/volist}
+			{/if}
+		</ul>
+	</div>
+<!--	<div id="bare2" class="container">-->
+<!--		<h2>大带宽服务器的优势</h2>-->
+<!--		<ul class="clear">-->
+<!--		{if condition="$article"}-->
+<!--		{volist name="article" id="vo"}-->
+<!--		<li>-->
+<!--			<div class="bg1">-->
+<!--				<img src="/uploads/{$vo.a_img|default=''}" alt="{$vo.a_title|default=''}">-->
+<!--				<p>{$vo.a_title|default=''}</p>-->
+<!--				<span class="c2">{$vo.a_introduction|default=''}</span>-->
+<!--			</div>-->
+<!--		</li>-->
+<!--		{/volist}-->
+<!--		{/if}-->
+<!--		</ul>-->
+<!--	</div>-->
+</div>
+{include file="public/footer" }
+<script type="text/javascript">
+	$('#menu').on('click',function(){$(this).toggleClass('show');$('body').toggleClass('fix');})
+	$('#navl li').on('click',function(){if($('#menu').is(":visible")){$(this).toggleClass('show').siblings().removeClass('show');}return})
+	$('#bare1 .tab li').on('click',function(){$(this).addClass("light").siblings().removeClass('light');$("#bare1 .card li").hide().eq($(this).index()).show();})
+	$('#bare1 .tab1 li').on('click',function(){$(this).addClass("light").siblings().removeClass('light');$("#bare1 .card2>li").hide().eq($(this).index()).show();})
+
+  var tab= new Swiper('#bare1 .tab1',{
+  	freeMode: true,
+		centeredSlides : true,
+		centeredSlidesBounds:true,
+		slidesPerView: 'auto',
+  })
+  var mySwiper2 = new Swiper('.swiper2',{
+		effect : 'coverflow',
+		loop:true,
+		slidesPerView: 1.5,
+		centeredSlides: true,
+	  observer: true,
+	  coverflowEffect: {
+	    rotate:50,
+	    // stretch: 0,
+	    depth: 60,
+	    modifier: 1,
+	    slideShadows : false
+	  },
+	  pagination: {
+	    el: '.swiper-pagination',
+	  },
+	})
+</script>

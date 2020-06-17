@@ -1,0 +1,78 @@
+{include file="public/header" }
+{include file="public/nav" }
+{include file="public/banner_b" }
+<div class="content">
+	<div id="sd1" class="container re1">
+		<h2>RAKSMART</h2>
+		<ul class="clear">
+      <li>
+        <div class="bg1">
+        	<img src="__STATIC__/images/about(1).png" alt="">
+	        <p>完善的解决方案</p>
+	        <span class="c2">定制方案，选择数据中心，采购硬件 专线接入，机器上架布线，技术维护</span>
+        </div>
+      </li>
+      <li>
+      	<div class="bg1">
+	        <img src="__STATIC__/images/about(2).png" alt="">
+	        <p>T级别国际宽带</p>
+	        <span class="c2">出口带宽覆盖全球，T级带宽保证 专线中国 电信CN2/CT、移动、联通</span>
+        </div>
+      </li>
+      <li>
+      	<div class="bg1">
+	        <img src="__STATIC__/images/about(3).png" alt="">
+	        <p>全天候支持</p>
+	        <span class="c2">及时通讯,800电话,快捷服务体系 提供从规划、实施、优化的全方位服务</span>
+        </div>
+      </li>
+      <li>
+      	<div class="bg1">
+	        <img src="__STATIC__/images/about(4).png" alt="">
+	        <p>定制业务</p>
+	        <span class="c2">国际ISO认证Tier 3+ 规格，采用国际一线品牌硬件支持</span>
+        </div>
+      </li>
+      <li>
+      	<div class="bg1">
+	        <img src="__STATIC__/images/about(5).png" alt="">
+	        <p>SD-WAN</p>
+	        <span class="c2">全球云连接，全球专线连接 提供强大的云+网络连接智能管理平台</span>
+        </div>
+      </li>
+      <li>
+      	<div class="bg1">
+	        <img src="__STATIC__/images/about(6).png" alt="">
+	        <p>DDoS 防御解决方案</p>
+	        <span class="c2">1Tbps+ DDoS防御解决方案 专业SOC工程师团队24x7小时服务</span>
+        </div>
+      </li>
+    </ul>
+	</div>
+	<div id="about2">
+		<h2>我们致力于</h2>
+		<ul class="clear container">
+			<li><img src="__STATIC__/images/about(7).png"><p>创建最好的服务平台与世界相连</p></li>
+			<li><img src="__STATIC__/images/about(8).png" alt=""><p>给客户、供应商与员工提供最舒心的服务体验</p></li>
+			<li><img src="__STATIC__/images/about(9).png" alt=""><p>运用我们的只是与经验降低成本，提供最高性价比</p></li>
+		</ul>
+	</div>
+	<div class="topimg" id="about3">
+		<img class="pc" src="__STATIC__/images/about-t2.png" alt="">
+		<img class="phone" src="__STATIC__/images/about-t3.png" alt="">
+		<div class="slide-txt c1">
+			<h1>准备好了吗？</h1>
+			<p>现在行动吧，开启连接平台与世界相连</p>
+			{if condition="$value neq ''"}
+			<a class="c1 btb" target="_blank" role="button" href="https://billing.raksmart.com/whmcs/cart.php">订购</a>
+			{/if}
+
+		</div>
+	</div>
+</div>
+{include file="public/footer" }
+<script type="text/javascript">
+	$('#menu').on('click',function(){$(this).toggleClass('show');$('body').toggleClass('fix');})
+	$('#navl li').on('click',function(){if($('#menu').is(":visible")){$(this).toggleClass('show').siblings().removeClass('show');}return})
+	
+</script>

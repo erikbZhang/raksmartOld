@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+        <title>{$title|default='RAKSMART'}</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+       <meta name="keywords" content="{$details['a_con']|default=''}" />
+	<meta name="description" content="{$details['a_introduction']|default=''}" />
+	    <link rel="stylesheet" type="text/css" href="__STATIC__/css/swiper.min.css">
+        <script type="text/javascript" src="__STATIC__/js/jquery-1.11.3.min.js"></script>
+        <script type="text/javascript" src="__STATIC__/js/swiper.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="__STATIC__/css/all.css?111155487">
+        <link rel="shortcut icon" href="#"/>
+</head>
+<body>
+<div id="header" class="c1 {if condition="isset($bg3)"} bg3 {/if}" {if condition="isset($bg3)"} style="position:relative;" {/if}>
+<a href="/"><img class="pc" src="__STATIC__/images/logo.png"></a>
+<label for="" class="phone" id="menu"><span></span><span></span><span></span></label>
+<ul id="navl">
+        <li class="pc"><a class="c1" href="/">首页</a></li>
+        <li>裸机云<div>
+                <a href="{:url('home/bare/index')}">裸机云</a>
+                <a href="{:url('home/large/index')}">大宽带服务器</a>
+                <a href="{:url('home/custom/index')}">定制服务器</a>
+        </div></li>
+        <li>托管<div>
+                <a href="{:url('home/solution/trusteeship')}">服务器托管</a>
+                <a href="{:url('home/solution/index')}">一站式解决方案</a>
+        </div></li>
+        <li>云集成服务<div>
+                <a href="{:url('home/privatea/publicindex')}">公有云</a>
+                <a href="{:url('home/privatea/index')}">私有云</a>
+                <a href="{:url('home/mix/index')}">混合云互联</a>
+        </div></li>
+        <li>解决方案<div>
+                <a href="{:url('home/ddos/ipindex')}">IP Transit</a>
+                <a href="{:url('home/ddos/index')}">DDOS 防御</a>
+                <a href="{:url('home/ddos/network')}">Network peering</a>
+                <a href="{:url('home/ddos/globala')}">全球网络</a>
+                <a href="{:url('home/ddos/sdwan')}">SD-WAN</a>
+        </div></li>
+        <li>合作与代理<div>
+                <a href="{:url('home/reseller/index')}">Reseller</a>
+                <a href="{:url('home/reseller/affiliates')}">Affiliates</a>
+        </div></li>
+        <li>公司介绍<div>
+                <a href="{:url('home/article/news')}">新闻动态</a>
+                <a href="{:url('home/all/join')}">加入我们</a>
+                <a href="{:url('home/article/news_zhishi')}">知识库</a>
+                <a href="{:url('home/all/sla')}">服务协议</a>
+                <a href="{:url('home/all/about')}">关于我们</a>
+                <a href="{:url('home/all/contact')}">联系我们</a>
+        </div></li>
+</ul>
+<ul id="navr">
+        <li class="pc"><span>中文</span><div>
+                <a href="/home_en">English</a>
+                <a href="/">中文</a>
+        </div></li>
+        <li><a class="c1" href="/">登录</a></li>
+        <li><a class="c1 btb" href="/">注册</a></li>
+</ul>
+</div>
+
+<div class="content bg2" style="position:relative;">
+        <img src="__STATIC__/images/online.png" id="online" class="pc">
+        <div class="container" id="details">
+                {if condition="$type eq 1"}
+                <p class="pc"><a href="{:url('home/article/news')}" class="c3"> 新闻中心</a></p>
+                {else/}
+                <p class="pc"><a href="{:url('home/article/news_zhishi')}" class="c3"> 知识库</a></p>
+                {/if}
+                <div class="bg1">
+                        <h2 class="c4">{$details['a_title']|default=''}<span class="c2">{:date('Y-m-d',$details['a_updatetime'])}</span></h2>
+                        {$details['a_content']|default=''}
+                </div>
+                <ul class="clear">
+                        {if condition="$pre"}
+                                        {if $pre.c_id eq 18}
+                                <li>
+                                        <a style="color: #000;" href="{$pre['a_url']}"><span class="c3">上一篇：</span><p>{$pre['a_title']|default=''}</p></a>
+                                </li>
+                                        {else/}
+                                <li>
+                                        <a style="color: #000;" href="{:url('home/article/details',array('a_id'=>$pre['a_id']))}"><span class="c3">上一篇：</span><p>{$pre['a_title']|default=''}</p></a>
+                                </li>
+                                        {/if}
+
+                        {else/}
+                        <li><span class="c3">上一篇：</span><p>已经是第一篇</p></li>
+                        {/if}
+                        {if condition="$next"}
+                                {if $next.c_id eq 18}
+                        <li>
+                                <a style="color: #000;" href="{$next['a_url']}"><span class="c3">下一篇：</span><p>{$next['a_title']|default=''}</p></a>
+                        </li>
+                                {else/}
+                        <li>
+                                <a style="color: #000;"  href="{:url('home/article/details',array('a_id'=>$next['a_id']))}"><span class="c3">下一篇：</span><p>{$next['a_title']|default=''}</p></a>
+                        </li>
+                                {/if}
+                        {else/}
+                        <li><span class="c3">上一篇：</span><p>已经是最后一篇</p></li>
+                        {/if}
+                </ul>
+        </div>
+
+</div>
+<div id="footer" class="bg3">
+        <div class="container">
+                <ul class="clear c1">
+                        <li>产品
+                                <a class="c1" href="{:url('home/bare/index')}">独立服务器</a>
+                                <a class="c1" href="{:url('home/large/index')}">大带宽服务器</a>
+                                <a class="c1" href="{:url('home/custom/index')}">定制服务器</a>
+                                <a class="c1" href="/"><img style="height:25px;" class="pc" src="__STATIC__/images/logo.png"></a>
+                        </li>
+                        <li>服务器
+                                <a class="c1" href="{:url('home/solution/trusteeship')}">服务器托管</a>
+                                <a class="c1" href="{:url('home/solution/index')}">一站式解决方案</a>
+                        </li>
+                        <li>云集成服务器
+                                <a class="c1" href="{:url('home/privatea/publicindex')}">公有云</a>
+                                <a class="c1" href="{:url('home/privatea/index')}">私有云</a>
+                                <a class="c1" href="{:url('home/mix/index')}">混合云互联</a>
+                        </li>
+                        <li>解决方案
+                                <a class="c1" href="{:url('home/ddos/ipindex')}">IP Transit</a>
+                                <a class="c1" href="{:url('home/ddos/index')}">DDOS 防御</a>
+                                <a class="c1" href="{:url('home/ddos/network')}">Network Peering</a>
+                                <a class="c1" href="{:url('home/ddos/globala')}">全球网络</a>
+                                <a class="c1" href="{:url('home/ddos/sdwan')}">SD-WAN</a>
+                        </li>
+                        <li>合作与代理
+                                <a class="c1" href="{:url('home/reseller/index')}">Reseller</a>
+                                <a class="c1" href="{:url('home/reseller/affiliates')}">Affiliates</a>
+                        </li>
+                        <li>公司介绍
+                                <a class="c1" href="{:url('home/article/news')}">新闻动态</a>
+                                <a class="c1" href="{:url('home/all/join')}">加入我们</a>
+                                <a class="c1" href="{:url('home/article/news_zhishi')}">知识库</a>
+                                <a class="c1" href="{:url('home/all/sla')}">服务协议</a>
+                                <a class="c1" href="{:url('home/all/contact')}">联系我们</a>
+                        </li>
+                </ul>
+        </div>
+</div>
+</body>
+</html>
+<script type="text/javascript">
+        $('#menu').on('click',function(){$(this).toggleClass('show');$('body').toggleClass('fix');})
+        $('#navl li').on('click',function(){if($('#menu').is(":visible")){$(this).toggleClass('show').siblings().removeClass('show');}return})
+</script>

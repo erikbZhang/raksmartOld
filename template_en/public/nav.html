@@ -1,0 +1,59 @@
+
+<div id="header" class="c1 {if condition="isset($bg3)"} bg3 {/if}" {if condition="isset($bg3)"} style="position:relative;" {/if}>
+<a href="/home_en"><img class="pc" src="__STATIC__/images/logo.png"></a>
+	<label for="" class="phone" id="menu"><span></span><span></span><span></span></label>
+	<ul id="navl">
+		<li class="pc"><a class="c1" href="/home_en">Home</a></li>
+		<li>Bare Metal Cloud<!-- 裸机云 --><div>
+				<a href="{:url('home_en/bare/index')}">Bare Metal Cloud<!-- 裸机云 --></a>
+				<a href="{:url('home_en/large/index')}">Bandwidth Intensive Servers</a>
+				<a href="{:url('home_en/custom/index')}">Customized Serves</a>
+			</div></li>
+		<li>Managed Colo<!-- 托管 --><div>
+			<a href="{:url('home_en/solution/trusteeship')}">Managed Colocation</a>
+			<a href="{:url('home_en/solution/index')}">One-Stop Solutions</a>
+		</div></li>
+		<li>Multi-Cloud Service<!-- 云集成服务 --><div>
+			<a href="{:url('home_en/privatea/publicindex')}">Public Cloud</a>
+			<a href="{:url('home_en/privatea/index')}">Private Cloud</a>
+			<a href="{:url('home_en/mix/index')}">Multi-Cloud Connectivity</a>
+		</div></li>
+		<li>Solutions<!-- 解决方案 --><div>
+			<a href="{:url('home_en/ddos/ipindex')}">IP Transit</a>
+			<a href="{:url('home_en/ddos/index')}">DDOS Mitigation</a>
+			<a href="{:url('home_en/ddos/network')}">Network peering</a>
+			<a href="{:url('home_en/ddos/globala')}">Global Network</a>
+			<a href="{:url('home_en/ddos/sdwan')}">SD-WAN</a>
+		</div></li>
+		<li>Partnership<!-- 合作与代理 --><div>
+			<a href="{:url('home_en/reseller/index')}">Reseller</a>
+			<a href="{:url('home_en/reseller/affiliates')}">Affiliates</a>
+		</div></li>
+		<li>Company<!-- 公司介绍 --><div>
+			<a href="{:url('home_en/article/news')}">News</a>
+			<a href="{:url('home_en/all/join')}">Join Us</a>
+			<a href="{:url('home_en/article/news_zhishi')}">Knowledge Base</a>
+			<a href="{:url('home_en/all/sla')}">Agreements</a>
+			<a href="{:url('home_en/all/about')}">About Us</a>
+			<a href="{:url('home_en/all/contact')}">Contact Us</a>
+		</div></li>
+	</ul>
+	<ul id="navr">
+		<li><span>English</span><div>
+		 <a href="{:url('home_en/index/get_url_all')}">English</a>
+				<a href="{:url('home/index/get_url_all')}">中文</a>	
+		</div></li>
+		<li><a class="c1" href="https://billing.raksmart.com/whmcs/clientarea.php">login</a></li>
+		<li><a class="c1 btb" href="https://billing.raksmart.com/whmcs/register.php">register</a></li>
+	</ul>
+</div>
+<!--
+<img src="__STATIC__/images/online.png" id="online" class="pc">
+<a href="#top"><img src="__STATIC__/images/ding.png" id="online1" class="pc"></a>
+--!>
+<script>
+$('#navr span').click(function(){
+		$(this).siblings('div').toggle();
+	})
+
+</script>

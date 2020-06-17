@@ -1,0 +1,45 @@
+{include file="public/header" }
+{include file="public/nav" }
+{include file="public/banner_b" }
+<div class="content">
+	<div id="con1" class="container">
+		<ul class="clear">
+			<li>
+				<div>
+					<ul>
+						<li><h3><i class="ico-sale"></i>Sales</h3></li>
+						<li><i class="ico-tel"></i>USA：{$data[10]['value']|default=''}</li>
+						<li><i class="ico-tel"></i>China：{$data[11]['value']|default=''}</li>
+						<li class="c4"><i class="ico-mail"></i>Email：{$data[12]['value']|default=''}</li>
+					</ul>
+				</div>
+			</li>
+			<li>
+				<div>
+					<ul>
+						<li><h3><i class="ico-technology"></i>Technical Support</h3></li>
+						<li><i class="ico-tel"></i>USA：{$data[13]['value']|default=''}</li>
+						<li><i class="ico-tel"></i>Global：{$data[14]['value']|default=''}</li>
+						<li><i class="ico-tel"></i>China：{$data[15]['value']|default=''}</li>
+						<li style="width:250px;" class="c4"><i  class="ico-mail"></i>Email：{$data[16]['value']|default=''}</li>
+					</ul>
+				</div>
+			</li>
+		</ul>
+	</div>
+	{include file="public/message" }
+</div>
+{include file="public/footer" }
+<script type="text/javascript">
+	$('#menu').on('click',function(){$(this).toggleClass('show');$('body').toggleClass('fix');})
+	$('#navl li').on('click',function(){if($('#menu').is(":visible")){$(this).toggleClass('show').siblings().removeClass('show');}return})
+	$('#budget').click(function(){
+    $(this).find('ol').show();
+  });
+  $('#budget li').click(function(e){
+    var val = $(this).text();
+    $(this).parents('ol').siblings('input').val(val);
+    $('#budget ol').hide();
+    e.stopPropagation();
+  });
+</script>

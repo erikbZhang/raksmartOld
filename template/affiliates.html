@@ -1,0 +1,59 @@
+{include file="public/header" }
+{include file="public/nav" }
+{include file="public/banner_b" }
+<div class="content">
+	<div id="affi1">
+		<ul class="clear container">
+			<li><img src="__STATIC__/images/affiliates(1).png" alt=""><p>激活推荐 获得推荐链接</p></li>
+			<li><img src="__STATIC__/images/affiliates(2).png" alt=""><p>分享推广链接</p></li>
+			<li><img src="__STATIC__/images/affiliates(3).png" alt=""><p>通过专属链接购买产品</p></li>
+			<li><img src="__STATIC__/images/affiliates(4).png" alt=""><p>获得高额佣金</p></li>
+		</ul>
+	</div>
+	<div id="mix2" class="affi2">
+		<h2>应用场景</h2>
+		<div class="bg3">
+			<ul class="container clear">
+				<li><img class="pc" src="__STATIC__/images/affiliates(5).png" alt=""><img class="phone" src="__STATIC__/images/affiliates(5)-1.png" alt=""><a href="javascript:;"><span class="c1">无资金投入</span></a></li>
+				<li><img class="pc" src="__STATIC__/images/affiliates(6).png" alt=""><img class="phone" src="__STATIC__/images/affiliates(6)-1.png" alt=""><a href="javascript:;"><span class="c1">无任务要求</span></a></li>
+				<li><img class="pc" src="__STATIC__/images/affiliates(7).png" alt=""><img class="phone" src="__STATIC__/images/affiliates(7)-1.png" alt=""><a href="javascript:;"><span class="c1">无佣金上限</span></a></li>
+				<li><img class="pc" src="__STATIC__/images/affiliates(8).png" alt=""><img class="phone" src="__STATIC__/images/affiliates(8)-1.png" alt=""><a href="javascript:;"><span class="c1">免费加入</span></a></li>
+			</ul>
+		</div>
+	</div>
+	<div id="affi3" class="bg2">
+		<h2>佣金计划规则</h2>
+		<ul class="clear container">
+			<li>
+				<div>
+					<h3 id="affi3-li1">01 收益计算</h3>
+					<p>佣金=订单金额*15% 续费仍然有15%<br><br></p>
+				</div>
+			</li>
+			<li>
+				<div>
+					<h3 id="affi3-li2">02 结算提现</h3>
+					<p>佣金累计至100美元可提现 佣金可提现至余额或美国银行卡<br><br></p>
+				</div>
+			</li>
+			<li>
+				<div>
+					<h3 id="affi3-li3">03 推荐须知</h3>
+					<p>不允许自己推荐自己，一经发现自动封账户；代理商账户不可被推荐，系统自动清除</p>
+				</div>
+			</li>
+			<li>
+				<div>
+					<h3 id="affi3-li4">04 推荐时长</h3>
+					<p>购买日起至客户周期结束为确认金额（不可提现）；如用户退款，佣金从确认金额中扣除</p>
+				</div>
+			</li>
+		</ul>
+	</div>
+</div>
+{include file="public/footer" }
+<script type="text/javascript">
+	$('#menu').on('click',function(){$(this).toggleClass('show');$('body').toggleClass('fix');})
+	$('#navl li').on('click',function(){if($('#menu').is(":visible")){$(this).toggleClass('show').siblings().removeClass('show');}return})
+	
+</script>

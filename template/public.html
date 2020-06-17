@@ -1,0 +1,60 @@
+{include file="public/header" }
+{include file="public/nav" }
+{include file="public/banner_b" }
+<div class="content">
+	{include file="public/public_product" }
+	<div id="gyy2" class="bg3 c1">
+		<h2>什么是混合云网络？</h2>
+		<ul class="clear container">
+			<li><img src="__STATIC__/images/gyy(1).png" alt="">裸机云</li>
+			<li><img src="__STATIC__/images/gyy(2).png" alt="">公有云</li>
+			<li><img src="__STATIC__/images/gyy(3).png" alt="">私有云</li>
+		</ul>
+	</div>
+	<div id="gyy3" class="bg2">
+		<h2>全球混合云网络构建</h2>
+		<img src="__STATIC__/images/gyy(4).png" alt="">
+	</div>
+</div>
+{include file="public/footer" }
+<script type="text/javascript">
+
+	$('#menu').on('click',function(){
+		$(this).toggleClass('show');
+		$('body').toggleClass('fix');
+	})
+	$('#navl li').on('click',function(){
+		if($('#menu').is(":visible")){
+			$(this).toggleClass('show').siblings().removeClass('show');
+		}
+		return
+	})
+	
+	$('#bare1 .tab li').on('click',function(){$(this).addClass("light").siblings().removeClass('light');$("#bare1 .card li").hide().eq($(this).index()).show();})
+	$('#bare1 .tab1 li').on('click',function(){$(this).addClass("light").siblings().removeClass('light');$("#bare1 .card2>li").hide().eq($(this).index()).show();})
+	var tab1= new Swiper('#bare1 .tab1',{
+  	freeMode: true,
+		centeredSlides : true,
+		centeredSlidesBounds:true,
+		slidesPerView: 'auto',
+  })
+  var mySwiper2 = new Swiper('.swiper2',{
+		effect : 'coverflow',
+		loop:true,
+		slidesPerView: 1.5,
+		centeredSlides: true,
+	  observer: true,
+	  coverflowEffect: {
+	    rotate:50,
+	    // stretch: 0,
+	    depth: 60,
+	    modifier: 1,
+	    slideShadows : false
+	  },
+	  pagination: {
+	    el: '.swiper-pagination',
+	  },
+	})
+
+	
+</script>

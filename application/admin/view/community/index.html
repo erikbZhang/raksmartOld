@@ -1,0 +1,226 @@
+  <div class="layui-fluid">
+    <div class="layui-row layui-col-space15">
+      <div class="layui-col-md12">
+        <div class="layui-card">
+          <blockquote class="layui-elem-quote quoteBox">
+            <form class="layui-form">
+                <div class="layui-inline">
+                    <div class="layui-input-inline">
+                        <input type="text" class="layui-input community_name" placeholder="社区名称" />
+                    </div>
+					<div class="layui-input-inline">
+                        <input type="text" class="layui-input sale_name" placeholder="工程部负责人" />
+                    </div>
+					<div class="layui-input-inline">
+                        <select id="company_id" name="company_id" >
+							<option value="">所属公司</option>
+							{if condition="(!empty($company_list))"}
+							{volist name="company_list" id="voo" key="k"}
+							<option value="{$voo.id}">{$voo.company_name}</option>
+							{/volist}
+							{/if}
+						</select>
+                    </div>
+					<div class="layui-input-inline">
+                        <input type="text" class="layui-input record_no" placeholder="合同编号" />
+                    </div>
+					<div class="layui-input-inline">
+                        <input type="text" id="start_time" autocomplete="off" class="layui-input start_time" placeholder="开始时间" />
+                    </div>
+					<div class="layui-input-inline">
+                        <input type="text" id="end_time" autocomplete="off" class="layui-input end_time" placeholder="结束时间" />
+                    </div>
+                    <a class="layui-btn search_btn" data-type="reload">查询</a>
+                    <a class="layui-btn search_btn" id="showall">显示所有</a>
+                </div>
+            </form>
+        </blockquote>
+		
+	<div class="layui-tab layui-tab-card">
+	  <ul class="layui-tab-title">
+		<li class="layui-this tab" data="">全部</li>
+		{if condition="$config_jindu"}
+		{volist name="config_jindu" id="vo" key="k"}
+		 <li class="tab" data="{$k}">{$vo}</li>
+		{/volist}
+		{/if}
+		<li class="tab" data="111">即将到期</li>
+		<li class="tab" data="222">合作已经终止</li>
+		<!-- <li>用户管理</li>
+		<li>权限分配</li> -->
+	  </ul>
+	  <div class="layui-tab-content" style="height: 100%;">
+		
+		 <div class="layui-card-body layui-show">
+			<table class="layui-hide" id="test-table-autowidth" lay-filter="taskTable" ></table>
+			<!--操作-->
+			<script type="text/html" id="userListBar">
+				<a class="layui-btn layui-btn-xs" lay-event="details">详情</a>
+				<a class="layui-btn layui-btn-xs layui-btn-normal" lay-event="ditu">地图定位</a>
+				{{#  if(d.status == "1"){ }}
+				<a class="layui-btn layui-btn-xs" lay-event="nullify">作废</a>
+				{{#  } }}
+			</script>
+		  </div>
+		  
+	  </div>
+	</div>
+		
+        </div>
+      </div>
+    </div>
+  </div>     
+  <script>  
+  layui.config({
+    base: '/static/layuiadmin/' //静态资源所在路径
+  }).extend({
+    index: 'lib/index' //主入口模块
+  }).use(['index', 'table','form','laydate'], function(){
+    var table = layui.table;
+	var form = layui.form;
+	
+	var laydate = layui.laydate;
+	//日期
+	laydate.render({
+		elem: '.start_time'
+	});
+	laydate.render({
+		elem: '.end_time'
+	});
+	 
+	
+    table.render({
+      elem: '#test-table-autowidth'
+      ,url: '/admin/community/getJsonData'
+      ,cellMinWidth: 80 //全局定义常规单元格的最小宽度，layui 2.2.1 新增
+      ,toolbar: '#test-table-toolbar-toolbarDemo'
+	  , height: 600
+      , width : 'auto'
+	  , limit: 20
+	  , limits: [10, 15, 20, 25, 30]
+	  , page: true
+	  , id : "userListTable"
+	  , cols: [[
+        {type:'numbers', width:50, title: '序号'}
+		,{field:'community_name',width:150,  title: '社区名称'}
+		,{field:'property_name',width:150,  title: '所属物业'}
+		,{field:'linkman',width:130,  title: '社区联系人'}
+		,{field:'mobile',width:130,  title: '社区联系人电话'}
+		,{field:'sale_name',width:130,  title: '工程部负责人'}
+		,{field:'company_name',width:100,  title: '所属公司'}
+        ,{field:'num',width:80, title: '车位数'} 
+        ,{field:'record_no',width:130, title: '合同编号'} 
+        ,{field:'start_time',width:120, title: '开始时间'} 
+        ,{field:'end_time',width:120, title: '结束时间'} 
+        ,{field:'type_name',width:120, title: '进度'} 
+        ,{field:'status_name',width:60, title: '作废'} 
+		,{title: '操作',fixed: 'right',width:220,toolbar:'#userListBar'}
+      ]]
+    });
+	
+	//搜索【此功能需要后台配合，所以暂时没有动态效果演示】
+	$(".search_btn").on("click",function(){
+		table.reload("userListTable",{
+			page: {
+				curr: 1 //重新从第 1 页开始
+			},
+			where: {
+				community_name: $(".community_name").val(), //搜索内容
+				sale_name: $(".sale_name").val(),//搜索内容
+				type: $("#type").val(), //搜索内容
+				record_no: $("#record_no").val(), //搜索内容
+				start_time: $("#start_time").val(), //搜索内容
+				end_time: $("#end_time").val(), //搜索内容
+				company_id: $("#company_id").val() //搜索内容
+			}
+		})
+	});
+	
+	$(".tab").on("click",function(){
+		var tab = $(this).attr('data');
+		table.reload("userListTable",{
+			page: {
+				curr: 1 //重新从第 1 页开始
+			},
+			where: {
+				community_name: $(".community_name").val(), //搜索内容
+				sale_name: $(".sale_name").val(),//搜索内容
+				type: $("#type").val(), //搜索内容
+				record_no: $("#record_no").val(), //搜索内容
+				start_time: $("#start_time").val(), //搜索内容
+				end_time: $("#end_time").val(), //搜索内容
+				tab: tab //搜索内容
+			}
+		})
+	});
+	
+	
+	$('#showall').click(function () {
+		location.reload();
+	});
+	
+	//列表操作
+	table.on('tool(taskTable)', function(obj){
+		var layEvent = obj.event,
+			data = obj.data;
+		if(layEvent === 'details'){ //编辑
+			var community_id = data.community_id;
+			var community_name = data.community_name;
+			var index = layui.layer.open({
+				title : community_name + " 详情",
+				area: ['900px', '800px'],
+				type : 2,
+				content : "/admin/community/details?community_id="+community_id,
+				end: function () {
+					//table.reload("userListTable");
+					return false;
+				}
+			});
+		}else if(layEvent === 'ditu'){
+			var community_id = data.community_id;
+			var community_name = data.community_name;
+			var index = layui.layer.open({
+				title : community_name + " 地图设置",
+				area: ['900px', '800px'],
+				type : 2,
+				content : "/admin/community/ditu?community_id="+community_id,
+				end: function () {
+					//table.reload("userListTable");
+					return false;
+				}
+			});
+		}else if(layEvent === 'nullify'){
+			var community_id = data.community_id;
+			var community_name = data.community_name;
+			layer.confirm('确认作废吗？', {
+				btn : [ '确定', '取消' ]//按钮
+			}, function(index) {
+				$.ajax({
+					type:"GET",
+					url:"/admin/community/nullify?community_id="+community_id,
+					data:{},
+					dataType:"JSON",
+					success:function(data){
+						console.log(data);
+						if(data.code == 200)
+						{
+							layer.msg('成功！',{icon:1,time: 2000},function(){
+								table.reload("userListTable",{})
+								//window.parent.location.reload();//刷新父页面
+							});
+						}else{
+							//obj.attr('disabled',false);
+							layer.msg(data.message,{icon:2}, function(){ });
+						}
+					}
+				});
+			});	
+		}
+	});
+
+	
+  });
+  
+  
+
+  </script>

@@ -1,0 +1,92 @@
+
+  <div class="layui-fluid">
+    <div class="layui-row layui-col-space15">
+      <div class="layui-col-md12">
+        <div class="layui-card">
+          <blockquote class="layui-elem-quote quoteBox">
+            <form class="layui-form search-form">
+                <div class="layui-inline">
+                    <div class="layui-input-inline">
+                        <input type="text" class="layui-input name" name="name" placeholder="姓名" />
+                    </div>
+                    <a class="layui-btn search_btn" data-type="reload">查询</a>
+                    <a class="layui-btn search_btn" id="showall">显示所有</a>
+                </div>
+            </form>
+        </blockquote>
+		  <div class="layui-card-body">
+            <table class="layui-hide" id="test-table-autowidth" lay-filter="taskTable" ></table>
+			<!--操作-->
+			<script type="text/html" id="userListBar">
+				<a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="delete">删除</a>
+			</script>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>  
+  <script>  
+  
+  layui.use(['table','form'], function(){
+    var table = layui.table;
+	var form = layui.form;
+    table.render({
+      elem: '#test-table-autowidth'
+      ,url: '/admin/message/getJsonData'
+      //,cellMinWidth: 80 //全局定义常规单元格的最小宽度，layui 2.2.1 新增
+      , height: 500
+	  , limit: 20
+	  , limits: [10, 15, 20, 25, 30]
+	  , page: true
+	  , id : "userListTable"
+	  , cols: [[
+        {type:'numbers', width:80, title: '序号', sort: true}
+		,{field:'name',width:120,  title: '姓名'}
+		,{field:'email',  width:170,title: '邮箱'}
+		,{field:'tell',  width:120,title: '联系电话'}
+		,{field:'type',  width:180,title: '价格'}
+		,{field:'content',  title: '留言内容'}
+		,{field:'addtime',width:150,  title: '留言时间'}
+		,{title: '操作',templet:'#userListBar'}
+      ]]
+    });
+	
+	//搜索【此功能需要后台配合，所以暂时没有动态效果演示】
+	$(".search_btn").on("click",function(){
+		table.reload("userListTable",{
+			page: {
+				curr: 1 //重新从第 1 页开始
+			},
+			where: $('.search-form').serializeJson(),
+		})
+	});
+	$('#showall').click(function () {
+		location.reload();
+	});
+	
+	//列表操作
+	table.on('tool(taskTable)', function(obj){
+		var layEvent = obj.event,
+			data = obj.data;
+		if(layEvent === 'delete'){
+			 layer.confirm('确定要删除么？不可恢复', {
+				btn: ['确定','取消'] //按钮
+			 }, function(){
+				$.ajax({
+                    type:"POST",
+                    url:'/admin/message/deleteMessage',
+                    data:{id:data.id},
+                    traditional: true,
+                    dataType:"JSON",
+                    success:function(res){
+                        obj.del();
+                        layer.msg("删除成功");
+                    }
+                });
+			 });
+		}
+	});
+	
+	
+  }); 
+  </script>

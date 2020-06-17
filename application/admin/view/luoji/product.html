@@ -1,0 +1,134 @@
+
+  <div class="layui-fluid">
+    <div class="layui-row layui-col-space15">
+      <div class="layui-col-md12">
+        <div class="layui-card">
+          <blockquote class="layui-elem-quote quoteBox">
+            <form class="layui-form search-form">
+                <div class="layui-inline">
+                    <div class="layui-input-inline">
+                        <select name="p_area">
+							<option value="">请选择服务器</option>
+							{volist name="area_info" id="vo"}
+							<option value="{$vo.id}" >{$vo.area_name}</option>
+							{/volist}
+						  </select>
+                    </div>
+					<div class="layui-input-inline">
+                        <input type="text" class="layui-input p_name" name="p_name" placeholder="产品名称" />
+                    </div>
+					<input type="hidden" id="type" name="type" value="{$type}">
+                    <a class="layui-btn search_btn" data-type="reload">查询</a>
+                    <a class="layui-btn search_btn" id="showall">显示所有</a>
+					<div class="layui-inline" style="margin-left:25px;">
+						<a class="layui-btn layui-btn-normal add_btn">新增</a>
+					</div>
+                </div>
+            </form>
+        </blockquote>
+		  <div class="layui-card-body">
+            <table class="layui-hide" id="test-table-autowidth" lay-filter="taskTable" ></table>
+			<!--操作-->
+			<script type="text/html" id="userListBar">
+				<a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+				<a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="delete">删除</a>
+			</script>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>  
+  <script>  
+  
+  layui.use(['table','form'], function(){
+    var table = layui.table;
+	var form = layui.form;
+	var type = $("#type").val();
+    table.render({
+      elem: '#test-table-autowidth'
+      ,url: '/admin/luoji/getJsonDataProduct?type='+type
+      //,cellMinWidth: 80 //全局定义常规单元格的最小宽度，layui 2.2.1 新增
+      , height: 500
+	  , limit: 20
+	  , limits: [10, 15, 20, 25, 30]
+	  , page: true
+	  , id : "userListTable"
+	  , cols: [[
+        {type:'numbers', width:50, title: '序号', sort: true}
+		,{field:'p_name',width:160,  title: '产品名称'}
+		,{field:'p_area_name', title: '所属地区'}
+		,{field:'p_nc',  title: '内存'}
+		,{field:'p_yp',  title: '硬盘'}
+		,{field:'p_kd',  title: '宽带'}
+		,{field:'p_ll',  title: '流量'}
+		,{field:'p_ip',  title: 'ip'}
+		,{field:'p_money',  title: '金额'}
+		,{field:'p_url',  title: '去订购'}
+		,{field:'sort',  title: '排序'}
+		,{field:'addtime',  title: '添加时间'}
+		,{title: '操作',templet:'#userListBar'}
+      ]]
+    });
+	
+	//搜索【此功能需要后台配合，所以暂时没有动态效果演示】
+	$(".search_btn").on("click",function(){
+		table.reload("userListTable",{
+			page: {
+				curr: 1 //重新从第 1 页开始
+			},
+			where: $('.search-form').serializeJson(),
+		})
+	});
+	$('#showall').click(function () {
+		location.reload();
+	});
+	
+	//列表操作
+	table.on('tool(taskTable)', function(obj){
+		var layEvent = obj.event,
+			data = obj.data;
+		if(layEvent === 'edit'){ //编辑
+			var id = data.id;
+			var index = layui.layer.open({
+				title :"详情",
+				area: ['850px', '600px'],
+				type : 2,
+				content : "/admin/luoji/editP?id="+id,
+				end: function () {
+					//table.reload("userListTable");
+					return false;
+				}
+			});
+		}else if(layEvent === 'delete'){
+			 layer.confirm('确定要删除么？', {
+				btn: ['确定','取消'] //按钮
+			 }, function(){
+				$.ajax({
+                    type:"POST",
+                    url:'/admin/luoji/deleteProduct',
+                    data:{id:data.id},
+                    traditional: true,
+                    dataType:"JSON",
+                    success:function(res){
+                        obj.del();
+                        layer.msg("删除成功");
+                    }
+                });
+			 });
+		}
+	});
+	
+	/**
+	 *添加
+	 * */
+	$(".add_btn").click(function(){
+		var index = layui.layer.open({
+			title : "新增",
+			type : 2,
+			area: ['850px', '600px'],
+			content : "/admin/luoji/addProduct?type="+type,
+		})
+	});
+	
+  }); 
+  </script>

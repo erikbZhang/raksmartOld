@@ -1,0 +1,63 @@
+{include file="public/header" }
+{include file="public/nav" }
+{include file="public/banner_b" }
+<div class="content">
+	<div id="gl1" class="bg2">
+		<img src="__STATIC__/images/global1.png" alt="">
+		<h2>全球 BGP 网络</h2>
+		<p class="container">BGP（Border Gateway Protocol,边界网关协议）是用来连接 Internet 上的独立系统的路由选择协议，通过 BGP 协议我们自身的 AS号（54600）与中国电信 CN2、中国电信163（4134）、中国联通、中国移动，HE、NTT、GTT、Telia、Cogent、Softbank、PCCW 等全球多家顶级运营商实现互联，通过 BGP 协议互联后，网络运营商的所有骨干路由器将会判断 IP 的最佳路由，以保证不同用户的高速访问</p>
+	</div>
+	<div id="home3" class="sd2">
+		<h2 style="padding-bottom:40px;">全球网络覆盖</h2>
+		<ul id="map">
+	<img src="__STATIC__/images/map.png" style="display:block;">
+	<li id="btl"><i></i><p>波特兰</p></li>
+	<li id="shs"><i></i><p>圣何塞</p></li>
+	<li id="lsj"><i></i><p>洛杉矶</p></li>
+	<li id="hg"><i></i><p>韩国</p></li>
+	<li id="rb"><i></i><p>日本</p></li>
+	<li id="tw"><i></i><p>台湾</p></li>
+	<li id="yd"><i></i><p>印度</p></li>
+	<li id="tg"><i></i><p>泰国</p></li>
+	<li id="yn"><i></i><p>越南</p></li>
+	<li id="jpz"><i></i><p>柬埔寨</p></li>
+	<li id="flb"><i></i><p>菲律宾</p></li>
+	<li id="xjp"><i></i><p>新加坡</p></li>
+	<li id="ld" class="bg7"><i class="bg7"></i><p>伦敦</p></li>
+	<li id="flkf" class="bg7"><i class="bg7"></i><p>法兰克福</p></li>
+	<li id="amstd" class="bg7"><i class="bg7"></i><p>阿姆斯特丹</p></li>
+</ul>
+	</div>
+	<div id="gl2" class="bg2">
+		<h2>全球网络测试</h2>
+		<div class="container">
+			<div id="roll-x" style="height:340px">
+				<table class="bg1">
+	        <tr>
+	          <th>网络名称</th>
+	          <th>运营商分布</th>
+	          <th>测试 IP</th>
+	          <th>下载测试</th>
+	        </tr>
+			{if condition="$network"}
+			{volist name="network" id="vo"}
+			<tr>
+				<td>{$vo.w_name|default=''}</td>
+				<td>{$vo.w_operator_name|default=''}</td>
+				<td>{$vo.w_ip|default=''}</td>
+				<td><a class="c1 btb" {if condition="$vo['w_url']"} href="{$vo['w_url']|default=''}"{else/} href="javascript:;" {/if} >开始下载</a></td>
+			</tr>
+			{/volist}
+			{/if}
+
+	      </table>
+			</div>
+		</div>
+	</div>
+</div>
+{include file="public/footer" }
+<script type="text/javascript">
+	$('#menu').on('click',function(){$(this).toggleClass('show');$('body').toggleClass('fix');})
+	$('#navl li').on('click',function(){if($('#menu').is(":visible")){$(this).toggleClass('show').siblings().removeClass('show');}return})
+
+</script>

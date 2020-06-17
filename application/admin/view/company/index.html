@@ -1,0 +1,107 @@
+
+  <div class="layui-fluid">
+    <div class="layui-row layui-col-space15">
+      <div class="layui-col-md12">
+        <div class="layui-card">
+          <blockquote class="layui-elem-quote quoteBox">
+            <form class="layui-form search-form">
+                <div class="layui-inline">
+                    <div class="layui-input-inline">
+                        <input type="text" class="layui-input name" name="company_name" placeholder="公司名称" />
+                    </div>
+					<div class="layui-input-inline">
+                        <input type="text" class="layui-input" name="linkman" placeholder="姓名" />
+                    </div>
+					<div class="layui-input-inline">
+                        <input type="text" class="layui-input" name="mobile" placeholder="联系方式" />
+                    </div>
+                    <a class="layui-btn search_btn" data-type="reload">查询</a>
+                    <a class="layui-btn search_btn" id="showall">显示所有</a>
+					<div class="layui-inline" style="margin-left:25px;">
+						<a class="layui-btn layui-btn-normal add_btn">新增</a>
+					</div>
+                </div>
+            </form>
+        </blockquote>
+		  <div class="layui-card-body">
+            <table class="layui-hide" id="test-table-autowidth" lay-filter="taskTable" ></table>
+			<!--操作-->
+			<script type="text/html" id="userListBar">
+				<a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+				<!-- <a class="layui-btn layui-btn-normal layui-btn-xs" lay-event="nouse">禁用/启用</a> -->
+			</script>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>  
+  <script>  
+  
+  layui.use(['table','form'], function(){
+    var table = layui.table;
+	var form = layui.form;
+    table.render({
+      elem: '#test-table-autowidth'
+      ,url: '/admin/company/getJsonData'
+      //,cellMinWidth: 80 //全局定义常规单元格的最小宽度，layui 2.2.1 新增
+      , height: 500
+	  , limit: 20
+	  , limits: [10, 15, 20, 25, 30]
+	  , page: true
+	  , id : "userListTable"
+	  , cols: [[
+        {type:'numbers', width:100, title: '序号', sort: true}
+		,{field:'company_name',width:250,  title: '公司名称'}
+		,{field:'linkman',width:250,  title: '姓名'}
+		,{field:'mobile',width:150,  title: '联系电话'}
+		,{field:'create_time',width:150,  title: '创建时间'}
+		,{title: '操作',templet:'#userListBar'}
+      ]]
+    });
+	
+	//搜索【此功能需要后台配合，所以暂时没有动态效果演示】
+	$(".search_btn").on("click",function(){
+		table.reload("userListTable",{
+			page: {
+				curr: 1 //重新从第 1 页开始
+			},
+			where: $('.search-form').serializeJson(),
+		})
+	});
+	$('#showall').click(function () {
+		location.reload();
+	});
+	
+	//列表操作
+	table.on('tool(taskTable)', function(obj){
+		var layEvent = obj.event,
+			data = obj.data;
+		if(layEvent === 'edit'){ //编辑
+			var id = data.id;
+			var index = layui.layer.open({
+				title :"详情",
+				area: ['500px', '500px'],
+				type : 2,
+				content : "/admin/company/edit?id="+id,
+				end: function () {
+					//table.reload("userListTable");
+					return false;
+				}
+			});
+		}
+	});
+	
+	/**
+	 *添加
+	 * */
+	$(".add_btn").click(function(){
+		var index = layui.layer.open({
+			title : "新增",
+			type : 2,
+			area: ['500px', '500px'],
+			content : "/admin/company/add",
+		})
+	});
+	
+  }); 
+  </script>

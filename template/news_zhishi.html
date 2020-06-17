@@ -1,0 +1,107 @@
+<link rel="stylesheet" type="text/css" href="__STATIC__/layui/css/layui.css">
+<script type="text/javascript" src="__STATIC__/layui/layui.js"></script>
+{include file="public/header" }
+{include file="public/nav" }
+{include file="public/banner_b" }
+<div class="content bg2" style="position:relative;">
+    <div class="container" id="news1">
+        <div class="bg1">
+            <ul class="tab">
+                <a href="{:url('home/article/news_zhishi',array('c_id'=>2))}"><li {if condition="$c_id eq 2"} class="light" {/if} >全部</li></a>
+                {if condition="$info"}
+                {volist name="info" id="vo"}
+                <a href="{:url('home/article/news_zhishi',array('c_id'=>$vo['c_id']))}"><li {if condition="$c_id eq $vo['c_id']"} class="light" {/if} >{$vo.c_name}</li></a>
+                {/volist}
+                {/if}
+            </ul>
+            <ul class="card">
+                <li style="display: list-item;">
+                    <ul id="html1">
+
+                    </ul>
+                    <div class="pc" id="page1"></div>
+                </li>
+                <li>
+                    <ul id="html2">
+                    </ul>
+                    <div class="pc" id="page2"></div>
+                </li>
+                <li>
+                    <ul id="html3">
+                    </ul>
+                    <div class="pc" id="page3"></div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <input type="hidden" name="c_id" id="c_id" value="{$c_id|default=1}">
+</div>
+{include file="public/footer" }
+<script type="text/javascript">
+    window.onload= function () {
+        loadData()  //请求数据
+        getPage()     //分页操作
+    };
+
+    var page = 1; //设置首页页码
+    var limit = 10;  //设置一页显示的条数
+    var total;    //总条数
+
+    function loadData(){
+        $.ajax({
+            type:"post",
+            url:"/home/article/getNews_new?c_id="+$("#c_id").val(),//对应controller的URL
+            async:false,
+            dataType: 'json',
+            data:{
+                "pageIndex":page,
+                "pageSize":limit,
+            },
+            success:function(ret){
+                total=ret.count;  //设置总条数
+                var data1=ret.data;
+                var html='';
+                if(data1){
+                    data1.forEach(function(value,index) {
+                    if(value.c_id == 18) {
+                            html+= '<li>';
+                            html+= '<a href="'+ value.a_url +'">'+ value.a_title + '<small>'+value.a_addtime + '</small></a></li>';
+                        }else{
+                            html+= '<li>';
+                            html+= '<a href="/home/article/details?a_id='+ value.a_id +'">'+ value.a_title + '<small>'+value.a_addtime + '</small></a></li>';
+                        }	
+			});
+                }
+                $("#html1").empty().append(html);
+            }
+        });
+    }
+    function getPage(){
+        layui.use('laypage', function(){
+            var laypage = layui.laypage;
+            //执行一个laypage实例
+            laypage.render({
+                elem: 'page1' //注意，这里的 test1 是 ID，不用加 # 号
+                ,count: total, //数据总数，从服务端得到
+                limit:limit,   //每页条数设置
+                jump: function(obj, first){
+                    page=obj.curr;  //改变当前页码
+                    limit=obj.limit;
+                    //首次不执行
+                    if(!first){
+                        loadData()  //加载数据
+                    }
+                }
+            });
+        });
+    }
+
+</script>
+<!-- <script type="text/javascript" src="__STATIC__/js/page.js"></script>
+<script type="text/javascript" src="__STATIC__/js/page2.js"></script>
+<script type="text/javascript" src="__STATIC__/js/page3.js"></script>
+<script type="text/javascript">
+	$('#menu').on('click',function(){$(this).toggleClass('show');$('body').toggleClass('fix');})
+	$('#navl li').on('click',function(){if($('#menu').is(":visible")){$(this).toggleClass('show').siblings().removeClass('show');}return})
+	$('.tab li').on('click',function(){$(this).addClass("light").siblings().removeClass('light');$(".card>li").hide().eq($(this).index()).show();})
+</script> -->

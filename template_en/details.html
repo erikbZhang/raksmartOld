@@ -1,0 +1,36 @@
+{include file="public/header" }
+{include file="public/nav" }
+<div class="content bg2" style="position:relative;">
+	<img src="__STATIC__/images/online.png" id="online" class="pc">
+	<div class="container" id="details">
+		{if condition="$type eq 1"}
+		<p class="pc"><a href="{:url('home_en/article/news')}" class="c3">< News</a></p>
+		{else/}
+		<p class="pc"><a href="{:url('home_en/article/news_zhishi')}" class="c3">< Knowledge Base</a></p>
+		{/if}
+
+		
+		<div class="bg1">
+			<h2 class="c4">{$details['a_title']|default=''}<span class="c2">{:date('Y-m-d',$details['a_updatetime'])}</span></h2>
+			{$details['a_content']|default=''}
+		</div>
+		<ul class="clear">
+			{if condition="$pre"}
+			<li><a style="color: #000;" href="{:url('home_en/article/details',array('a_id'=>$pre['a_id']))}"><span class="c3">上一篇：</span><p>{$pre['a_title']|default=''}</p></a></li>
+			{else/}
+			<li><span class="c3">上一篇：</span><p>It's the first one</p></li>
+			{/if}
+			{if condition="$next"}
+			<li><a style="color: #000;"  href="{:url('home_en/article/details',array('a_id'=>$next['a_id']))}"><span class="c3">下一篇：</span><p>{$next['a_title']|default=''}</p></a></li>
+			{else/}
+			<li><span class="c3">上一篇：</span><p>It's the last one</p></li>
+			{/if}
+		</ul>
+	</div>
+
+</div>
+{include file="public/footer" }
+<script type="text/javascript">
+	$('#menu').on('click',function(){$(this).toggleClass('show');$('body').toggleClass('fix');})
+	$('#navl li').on('click',function(){if($('#menu').is(":visible")){$(this).toggleClass('show').siblings().removeClass('show');}return})
+</script>

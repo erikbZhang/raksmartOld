@@ -1,0 +1,56 @@
+{include file="public/header" }
+{include file="public/nav" }
+{include file="public/banner_b" }
+<div class="content">
+	<div id="tg1" class="container">
+		<h2>为什么选择 RAKSMART 一站式托管服务？</h2>
+		<ul class="clear">
+			<li><div><img src="__STATIC__/images/solution(1).png"><p>VIP咨询服务</p><span class='c2'>提供一对一针对性专业咨询服务，提供针对客户需要的一站式解决方案</span></div></li>
+			<li><div><img src="__STATIC__/images/solution(2).png"><p>定制化服务</p><span class='c2'>与戴尔、超微、思科伙计一线供需关系，各种硬件设备配置有保障</span></div></li>
+			<li><div><img src="__STATIC__/images/solution(3).png"><p>全球网络部署</p><span class='c2'>提供全球网络互联解决方案，开通全球云专线链接</span></div></li>
+			<li><div><img src="__STATIC__/images/solution(4).png"><p>全球托管方案</p><span class='c2'>根据客户需求可全球范围内托管，提供公有云、私有云、混合云解决方案</span></div></li>
+			<li><div><img src="__STATIC__/images/solution(5).png"><p>24小时技术支持</p><span class='c2'>10年以上专业技术团队，24x7在线专业技术支持</span></div></li>
+			<li><div><img src="__STATIC__/images/solution(6).png"><p>DDOS 防御解决方案</p><span class='c2'>1 Tbps+ DDoS 防御解决方案 专业SOC工程师团队24x7小时服务</span></div></li>
+		</ul>
+	</div>
+	<div id="solution2">
+		<h2 class="c1">业务流程</h2>
+		<img class="pc container" src="__STATIC__/images/solution(7).png">
+		<img class="phone container" src="__STATIC__/images/solution(7)-1.png">
+	</div>
+	<div id="solution3" class="bg2">
+		<h2>RAKSMART</h2>
+		<ul class="container clear">
+			<li><img src="__STATIC__/images/solution(8).png"><p>省钱</p><span class="c2">多元化产品<br>享受批量购买折扣</span>
+			<li><img src="__STATIC__/images/solution(9).png"><p>省心</p><span class="c2">VIP服务器<br>选购定制计划</span>
+			<li><img src="__STATIC__/images/solution(10).png"><p>省时</p><span class="c2">一站式采购<br>轻松实现即时部署</span>
+			<li><img src="__STATIC__/images/solution(11).png"><p>省力</p><span class="c2">服务器托管<br>无忧购买</span>
+			<li><img src="__STATIC__/images/solution(12).png"><p>省事</p><span class="c2">专业购买咨询<br>技术团队支持</span></li>
+		</ul>
+	</div>
+	{include file="public/message" }
+</div>
+{include file="public/footer" }
+<script type="text/javascript">
+
+	$('#menu').on('click',function(){
+		$(this).toggleClass('show');
+		$('body').toggleClass('fix');
+	})
+	$('#navl li').on('click',function(){
+		if($('#menu').is(":visible")){
+			$(this).toggleClass('show').siblings().removeClass('show');
+		}
+		return
+	})
+
+	$('#budget').click(function(){
+    $(this).find('ol').show();
+  });
+  $('#budget li').click(function(e){
+    var val = $(this).text();
+    $(this).parents('ol').siblings('input').val(val);
+    $('#budget ol').hide();
+    e.stopPropagation();
+  });
+</script>

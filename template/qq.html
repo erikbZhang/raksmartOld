@@ -1,0 +1,148 @@
+<style>
+#QQ{
+    background-color:#CEECF5;
+	border-width:3px;
+	border-style: solid;
+	border-color: #73B8E6;
+	width:130px;
+	top:auto;
+	height:280px;
+}
+
+p {
+	line-height:25px;
+	font-family:"Microsoft YaHei";
+	font-size:13px;
+	font-weight:500;
+	color:#2E5983;
+	}
+
+.pic {
+	margin-bottom:15px;
+	margin-top:15px;
+}
+
+.qqchat {
+	margin-top:10px;
+
+}
+
+#BizQQWPA {
+	margin-top:10px;
+	margin-bottom:10px;
+}
+
+
+
+</style>
+
+<script type="text/javascript">
+function scrollx(p) {
+ var d = document, dd = d.documentElement, db = d.body, w = window, o = d.getElementById(p.id), ie6 = /msie 6/i.test(navigator.userAgent), style, timer;
+ if (o) {
+  cssPub = ";position:"+(p.f&&!ie6?'fixed':'absolute')+";"+(p.t!=undefined?'top:'+p.t+'px;':'bottom:0;');
+  if (p.r != undefined && p.l == undefined) {
+   o.style.cssText += cssPub + ('right:'+p.r+'px;');
+  } else {
+   o.style.cssText += cssPub + ('margin-left:'+p.l+'px;');
+  }
+  if(p.f&&ie6){
+   cssTop = ';top:expression(documentElement.scrollTop +'+(p.t==undefined?dd.clientHeight-o.offsetHeight:p.t)+'+ "px" );';
+   cssRight = ';right:expression(documentElement.scrollright + '+(p.r==undefined?dd.clientWidth-o.offsetWidth:p.r)+' + "px")';
+   if (p.r != undefined && p.l == undefined) {
+    o.style.cssText += cssRight + cssTop;
+   } else {
+    o.style.cssText += cssTop;
+   }
+   dd.style.cssText +=';background-image: url(about:blank);background-attachment:fixed;';
+  }else{
+   if(!p.f){
+    w.onresize = w.onscroll = function(){
+     clearInterval(timer);
+     timer = setInterval(function(){
+      //双选择为了修复chrome 下xhtml解析时dd.scrollTop为 0
+      var st = (dd.scrollTop||db.scrollTop),c;
+      c = st - o.offsetTop + (p.t!=undefined?p.t:(w.innerHeight||dd.clientHeight)-o.offsetHeight);
+      if(c!=0){
+       o.style.top = o.offsetTop + Math.ceil(Math.abs(c)/10)*(c<0?-1:1) + 'px';
+      }else{
+       clearInterval(timer);
+      }
+     },10)
+    }
+   }
+  }
+ }
+}
+</script>
+<!--<script charset="utf-8" src="http://wpa.b.qq.com/cgi/wpa.php"></script>-->
+<script charset="utf-8" src="https://wpa.b.qq.com/cgi/wpa.php"></script>
+<!-- WPA Button Begin -->
+<!--<script charset="utf-8" type="text/javascript" src="http://wpa.b.qq.com/cgi/wpa.php?key=XzgwMDA2MDA2M180NzEyNTNfODAwMDYwMDYzXw"></script>-->
+<script charset="utf-8" type="text/javascript" src="https://wpa.b.qq.com/cgi/wpa.php?key=XzgwMDA2MDA2M180NzEyNTNfODAwMDYwMDYzXw"></script>
+<!-- WPA Button End -->
+
+    <div style="z-index:999;display: block; position: fixed; left: -40px; top: 200px;">
+        <div id="zxd_x">
+            <a title="点击关闭"><b></b></a></div>
+<!--        <div class="content"><a href="https://billing.raksmart.com/whmcs/raksmart/turntable.php"><img src="/wanyun/Modules/Home/Tpl/images/xf.png" style="width:250px;"></a></div> --!>
+    </div>
+
+
+<div id="QQ" style="">
+
+<div class="qqchat">
+
+		<div align="center">
+			<p>QQ</p>
+        	<p>800060063</p>
+		</div>
+
+		<div class="pic" align="center">
+			<img src="__TMPL__images/qqchat.jpg" width="110px" height="80px" />
+		</div>
+        
+		<div align="center">
+			<p>Raksmart咨询服务</p>
+        	<p>工作时间<b>7x24</b>小时</p>
+		</div>
+  </div>
+
+<div id="BizQQWPA" align="center">
+<!--    <button  type="button">&nbsp;&nbsp;企业QQ交谈&nbsp;&nbsp;</button> -->
+<img onmouseover="bigImg(this)" onmouseout="normalImg(this)" src="__TMPL__images/btn.jpg" width="90px" height="28px" />
+</div>
+
+<script>
+function bigImg(x){
+	x.style.width="100px";
+}
+function normalImg(x){
+	x.style.width="90px";
+}
+</script>
+
+<script stype="text/javascript">
+BizQQWPA.addCustom({aty: '0', a: '0', nameAccount: 800060063, selector: 'BizQQWPA'});
+</script>
+<script type="text/javascript">
+//左右侧固定浮动的div建议放在html的最低部
+//右侧固定
+scrollx({id:'QQ', r:2, t:150});
+//左侧固定
+//scrollx({id:'float_left', l:10, f:1});
+//相对父级相定固定
+//scrollx({id:'float_father', l:300, t:200, f:1});
+//页面滚动同时滚动固定对像
+//scrollx({id:'float_father_2', l:500, t:300, f:0});
+/*
+scrollx参数说明
+
+id：浮动对象的id
+r：右边距（窗口右边距，不写为靠左浮动）
+l：左边距（距离父级对象的左边距） "r"和"l"只能有其中一个参数
+t：上边距（默认贴着底边，0是贴着顶边）
+f：1表示固定（不写或者0表示滚动）
+*/
+</script>
+

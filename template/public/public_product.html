@@ -1,0 +1,104 @@
+<div id="bare1">
+	<h2>{$product_name|default='公有云配置产品'}</h2>
+	<div class="container pc" style="position:relative;">
+		<div class="tab">
+			<ul>
+				{if condition="$data"}
+				{volist name="data" id="vo"}
+				<li {if condition="$key eq 0"} class="light" {/if} >{$vo.type_name|default=''}</li>
+				{/volist}
+				{/if}
+			</ul>
+		</div>
+	</div>
+	<ul class="card bg2 pc">
+		{if condition="$data"}
+		{volist name="data" id="vo"}
+		<li class="container" {if condition="$key eq 0"} style="display: list-item;" {/if}>
+		<table class="bg1">
+			<tr>
+				<th>产品名称</th>
+				<th>CPU</th>
+				<th>内存</th>
+				<th>硬盘</th>
+				<th>带宽</th>
+				<th>IP</th>
+				<th>价格(美金)</th>
+				<th>
+						操作系统
+				</th>			
+	</tr>
+			{if condition="$vo['info']"}
+			{volist name="vo['info']" id="voo"}
+			<tr>
+				<td>{$voo.name|default=''}</td>
+				<td>{$voo.cpu|default=''} </td>
+				<td>{$voo.nc|default=''}</td>
+				<td>{$voo.yp|default=''}</td>
+				<td>{$voo.dk|default=''}</td>
+				<td>{$voo.ip|default=''}</td>
+				<td>${$voo.money|default=''}</td>
+				<td>{$voo.system|default=''}</td>
+				<td><a class="btb c1" {if condition="$voo['url']"} href="{$voo['url']|default=''}"  {else/} href="javascript:;" {/if} >现在订购</a></td>
+			</tr>
+			{/volist}
+			{/if}
+		</table>
+		</li>
+		{/volist}
+		{/if}
+
+	</ul>
+	<div class="container phone" style="position:relative;">
+		<div class="swiper-container tab1">
+			<ul class="swiper-wrapper">
+				{if condition="$data"}
+				{volist name="data" id="vo"}
+				<li class="{if condition="$key eq 0"} light {/if} swiper-slide"  >{$vo.type_name|default=''}</li>
+				{/volist}
+				{/if}
+			</ul></div>
+	</div>
+	<ul class="bg2 phone card2">
+		{if condition="$data"}
+		{volist name="data" id="vo"}
+		<li class="container swiper-container  swiper2"  {if condition="$key eq 0"}style="display: list-item;" {/if}>
+		<ul class="clear swiper-wrapper">
+			{if condition="$vo['info']"}
+			{volist name="vo['info']" id="voo"}
+			<li class="swiper-slide">
+				<div class="bg1">
+					<p>产品名称 <span>{$voo.name|default=''}</span></p>
+					<p>CPU <span>{$voo.cpu|default=''}CPU</span></p>
+					<p>内存 <span>{$voo.nc|default=''}</span></p>
+					<p>硬盘 <span>{$voo.yp|default=''}</span></p>
+					<p>带宽 <span>{$voo.dk|default=''}</span></p>
+					<p>IP <span>{$voo.ip|default=''}</span></p>
+					<p>价格(美金) <span class='c4'>$ {$voo.money|default=''}</span></p>
+					<p style="line-height:40px;">操作系统 <span>
+								<select class="OS bg1">
+									<option value="1">操作系统</option>
+									<option {if condition="$voo['system'] eq 'Windows'"} selected {/if} value="Windows">Windows</option>
+									<option {if condition="$voo['system'] eq 'Linux'"} selected {/if} value="Linux">Linux</option>
+								</select>
+							</span></p>
+					<a class="btb c1" {if condition="$voo['url']"} href="{$voo['url']|default=''}"  {else/} href="javascript:;" {/if} >现在订购</a>
+				</div>
+			</li>
+			{/volist}
+			{/if}
+		</ul>
+		<div class="swiper-pagination"></div>
+		</li>
+		{/volist}
+		{/if}
+	</ul>
+</div>
+<script>
+	$(function(){
+		$(".OS").change(function(e){
+			var os = $(this).val();
+				$(window).attr('location',"{:url('home/Privatea/publicindex')}?id="+os )
+		});
+	});
+</script>

@@ -1,0 +1,63 @@
+{include file="public/header" }
+{include file="public/nav" }
+{include file="public/banner_b" }
+<div class="content">
+	<div id="gl1" class="bg2">
+		<img src="__STATIC__/images/global1.png" alt="">
+		<h2>Global BGP Network</h2>
+		<p class="container">Through Our AS 54600,  Peered Directly With Tier 1 Network Providers Like China Telecom, China Unicom, China Mobile, Telia, NTT, SoftBank, PCCW, GTT and Cogent Across Multiple Global Network Exchanges, Our Network Provides Optimized Routes To Reach Your Customers With Lightning Fast Speed</p>
+	</div>
+	<div id="home3" class="sd2">
+		<h2 style="padding-bottom:40px;">Our Network Footprint</h2>
+		<ul id="map">
+	<img src="__STATIC__/images/map.png" style="display:block;">
+	<li id="btl"><i></i><p>portland</p></li>
+	<li id="shs"><i></i><p>San Jose</p></li>
+	<li id="lsj"><i></i><p>Los Angeles</p></li>
+	<li id="hg"><i></i><p>Korea</p></li>
+	<li id="rb"><i></i><p>Japan</p></li>
+	<li id="tw"><i></i><p>Taiwan</p></li>
+	<li id="yd"><i></i><p>India</p></li>
+	<li id="tg"><i></i><p>Thailand</p></li>
+	<li id="yn"><i></i><p>Vietnam</p></li>
+	<li id="jpz"><i></i><p>Cambodia</p></li>
+	<li id="flb"><i></i><p>the Philippines</p></li>
+	<li id="xjp"><i></i><p>Singapore</p></li>
+	<li id="ld" class="bg7"><i class="bg7"></i><p>London</p></li>
+	<li id="flkf" class="bg7"><i class="bg7"></i><p>Frankfurt</p></li>
+	<li id="amstd" class="bg7"><i class="bg7"></i><p>Amsterdam</p></li>
+</ul>
+	</div>
+	<div id="gl2" class="bg2">
+		<h2>Speed Test</h2>
+		<div class="container">
+			<div id="roll-x" style="height:340px">
+				<table class="bg1">
+	        <tr>
+	          <th>Network name</th>
+	          <th>Distribution of operators</th>
+	          <th>Test IP</th>
+	          <th>Download test</th>
+	        </tr>
+			{if condition="$network"}
+			{volist name="network" id="vo"}
+			<tr>
+				<td>{$vo.w_name|default=''}</td>
+				<td>{$vo.w_operator_name|default=''}</td>
+				<td>{$vo.w_ip|default=''}</td>
+				<td><a class="c1 btb" style="font-size:12px;line-height:15px;" {if condition="$vo['w_url']"} href="{$vo['w_url']|default=''}"{else/} href="javascript:;" {/if} >START DOWNLOAD</a></td>
+			</tr>
+			{/volist}
+			{/if}
+
+	      </table>
+			</div>
+		</div>
+	</div>
+</div>
+{include file="public/footer" }
+<script type="text/javascript">
+	$('#menu').on('click',function(){$(this).toggleClass('show');$('body').toggleClass('fix');})
+	$('#navl li').on('click',function(){if($('#menu').is(":visible")){$(this).toggleClass('show').siblings().removeClass('show');}return})
+
+</script>

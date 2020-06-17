@@ -1,0 +1,125 @@
+<style>
+.layui-table img{
+	max-width:50px;
+	max-height:50px;
+}
+#selected_group_goods .label-title{width:auto;padding-left:0px;}
+#demo1{
+    max-width: 350px;
+    max-height: 200px;
+}
+</style>  
+  <div class="layui-fluid" >
+        <form class="layui-form websearch" action="" id="myForm" >
+			<div class="layui-form" wid100 lay-filter="">
+			  <div class="layui-form-item">
+                <label class="layui-form-label">类型</label>
+                <div class="layui-input-inline" style="width: 250px;">
+                    <select name="type">
+                        <option value="">请选择</option>
+                        {volist name="dictionaries_type" id="vo"}
+                        <option value="{$vo.id}" >{$vo.name}</option>
+                        {/volist}
+                    </select>
+                </div>
+                <div class="layui-form-mid layui-word-aux">&nbsp;</div>
+              </div>
+			  <div class="layui-form-item">
+                <label class="layui-form-label">产品名称</label>
+                <div class="layui-input-inline" style="width: 250px;">
+                  <input type="text" name="name" lay-verify='required' value="" class="layui-input" >
+                </div>
+                <div class="layui-form-mid layui-word-aux">&nbsp;</div>
+                  <label class="layui-form-label">CPU</label>
+                  <div class="layui-input-inline" style="width: 250px;">
+                      <input type="text" name="cpu" lay-verify='required' value="" class="layui-input" >
+                  </div>
+              </div>
+			  <div class="layui-form-item">
+                <label class="layui-form-label">内存</label>
+                <div class="layui-input-inline" style="width: 250px;">
+                    <input type="text" name="nc" lay-verify='required' value="" class="layui-input" >
+                </div>
+                <div class="layui-form-mid layui-word-aux"></div>
+                  <label class="layui-form-label">硬盘</label>
+                  <div class="layui-input-inline" style="width: 250px;">
+                      <input type="text" name="yp" lay-verify='required' value="" class="layui-input" >
+                  </div>
+                  <div class="layui-form-mid layui-word-aux"></div>
+              </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">带宽</label>
+                    <div class="layui-input-inline" style="width: 250px;">
+                        <input type="text" name="dk" lay-verify='required' value="" class="layui-input" >
+                    </div>
+                    <div class="layui-form-mid layui-word-aux"></div>
+                    <label class="layui-form-label">IP</label>
+                    <div class="layui-input-inline" style="width: 250px;">
+                        <input type="text" name="ip" lay-verify='required' value="" class="layui-input" >
+                    </div>
+                    <div class="layui-form-mid layui-word-aux"></div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">价格</label>
+                    <div class="layui-input-inline" style="width: 250px;">
+                        <input type="text" name="money"value="" placeholder="美元" class="layui-input">
+                    </div>
+                    <div class="layui-form-mid layui-word-aux"></div>
+                    <label class="layui-form-label">操作系统</label>
+                    <div class="layui-input-inline" style="width: 250px;">
+                        <select name="system">
+                            <option value="">请选择</option>
+                            <option value="Windows">Windows</option>
+                            <option value="Linux">Linux</option>
+                        </select>
+                    </div>
+                    <div class="layui-form-mid layui-word-aux"></div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">订购url</label>
+                    <div class="layui-input-inline" style="width: 250px;">
+                        <input type="text" name="url"value="" lay-verify='url' class="layui-input">
+                    </div>
+                    <div class="layui-form-mid layui-word-aux">Http://开头</div>
+                </div>
+
+              <div class="layui-form-item">
+                <div class="layui-input-block">
+                   <button style="margin-left:15%;" class="layui-btn" type="button" lay-filter="formDemo" lay-submit>保存数据</button>
+                </div>
+              </div>
+            </div>
+			</form>
+  </div>
+  <script>
+  layui.use(['form'], function(){
+	 var $ = layui.jquery;
+	 var form = layui.form;
+		//提交
+		form.on('submit(formDemo)', function(data){
+            var obj = $(this);
+			var formData = $("#myForm").serialize();
+            obj.attr('disabled',true);
+            $.ajax({
+                type:"POST",
+                url:'/admin/configuration/submitdata',
+                data:formData,
+                dataType:"JSON",
+                success:function(data){
+                    if(data.code == 0)
+                    {
+                        layer.msg('保存成功！',{icon:1,time: 2000},function(){
+                            window.parent.location.reload();//刷新父页面
+                            parent.layer.closeAll();
+                        });
+                    }
+                    else{
+                        obj.attr('disabled',false);
+                        layer.msg(data.msg,{icon:2}, function(){ });
+                    }
+                }
+            });
+        });
+  
+  });
+  </script>

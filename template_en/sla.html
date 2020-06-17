@@ -1,0 +1,36 @@
+{include file="public/header" }
+{include file="public/nav" }
+{include file="public/banner_b" }
+<div class="content bg2" style="position:relative;padding:56px 0;">
+<div class="container" id="sla">
+	<div class="bg1">
+		<ul>
+			{if condition="$info"}
+			{volist name="info" id="vo"}
+			<li>
+				<h3>{$vo.a_title|default=''} <i class="min-arrow">&#xe7af;</i></h3>
+				<div>
+					{$vo.a_content|default=''}
+					<div class="c4 bg1">展开更多<i class="min-arrow">&#xe7af;</i></div>
+				</div>
+			</li>
+			{/volist}
+			{/if}
+		</ul>
+	</div>
+</div>
+</div>
+{include file="public/footer" }
+<script type="text/javascript">
+	$('#menu').on('click',function(){$(this).toggleClass('show');$('body').toggleClass('fix');})
+	$('#navl li').on('click',function(){if($('#menu').is(":visible")){$(this).toggleClass('show').siblings().removeClass('show');}return})
+	$('.tab li').on('click',function(){$(this).addClass("light").siblings().removeClass('light');$(".card>li").hide().eq($(this).index()).show();})
+	$(".c4").on("click",function (){
+		$(this).siblings('p').css({'-webkit-line-clamp':'unset'});
+		$(this).hide();
+	})
+	$("#sla h3").on("click",function (){
+		$(this).siblings('div').show().parent().siblings('li').children('div').hide();
+		$(this).children('i').html('&#xe7ad;').parent().parent().siblings('li').find('i').html('&#xe7af;');
+	})
+</script>

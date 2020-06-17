@@ -1,0 +1,80 @@
+<link type="text/css" rel="stylesheet" href="/static/ztree/zTreeStyle/zTreeStyle.css">
+<!-- <script type="text/javascript" src="/static/ztree/jquery-1.4.4.min.js"></script> -->
+<script src="/static/ztree/jquery.ztree.core.js"></script>
+<script src="/static/ztree/jquery.ztree.excheck.js"></script>
+<div class="layopenform" style="margin-top: 20px;">
+	<form class="layui-form webform" method="post">
+	   <div class="layui-form-item">
+	   <label class="layui-form-label">选择权限</label>
+	   	<div class="layui-inline">
+	   		<ul id="menu_tree" class="ztree"></ul>
+	   	</div>
+	   </div>
+	   <div class="layui-form-item">
+	   <label class="layui-form-label"></label>
+	   <div class="layui-inline">
+	    <button class="layui-btn" lay-submit lay-filter="create">保存</button>
+	    <a class="layui-btn layui-btn-primary" id="cancel">取消</a>
+	    </div>
+	  </div>
+		<input type="hidden" name="role_id" value="{$role_id}">
+		  <input type="hidden" name="menu_ids" value="{$user_menu}" id="menu_ids">
+	 </form>
+</div>
+<script type="text/javascript">
+$(function() {
+   layui.use(['layer','form'],function(){
+       var $ = layui.jquery;
+  		var layer = layui.layer;
+  		var layform = layui.form;
+		layform.on('submit(create)',function(data){
+		 if(data.field.menu_ids == '') layer.msg('请选择权限菜单',{icon:2,offset: ['40%', '40%']});
+		 else
+		 {
+			$.post('/admin/role/bindpriv',$('.webform').serialize(),function(data){
+                if(data.code == 0){
+					show_msg('操作成功',true,function(){
+						 parent.layer.closeAll();
+					});
+					return true;
+				}
+                layer.msg(data.msg,{icon:2,time: 2000});
+			},'json');
+		 }
+		 return false;
+		});
+  });
+});
+
+ //初始化权限ztree菜单
+  var setting = {
+		check: {
+			enable: true
+		},
+		data: {
+			simpleData: {
+				enable: true
+			}
+		},
+		callback: {
+				onCheck: selMenu
+			}
+	};
+	var nodes = {$menu};
+	$.fn.zTree.init($("#menu_tree"), setting, nodes);
+	var zTree = $.fn.zTree.getZTreeObj("menu_tree");
+	var type = { "Y":"ps", "N":"ps"};
+	zTree.setting.check.chkboxType = type;
+
+  	function selMenu(event, treeId, treeNode)
+  	{
+  		var menu_ids = new Array();
+  		var treeObj = $.fn.zTree.getZTreeObj(treeId);
+  		var check_menu = treeObj.getCheckedNodes(true);
+  		for(var i=0;i<check_menu.length;i++)
+  		{
+  			menu_ids.push(check_menu[i].id);
+  		}
+  		$("#menu_ids").val(menu_ids.join(','));
+  	}
+</script>
